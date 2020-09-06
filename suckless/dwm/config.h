@@ -82,9 +82,9 @@ static Key keys[] = {
 	{ MODKEY,               XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,               XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,     XK_0,      tag,            {.ui = ~0 } },
-	{ ShiftMask,            XK_F10,    spawn,          SHCMD("pamixer -t") },
-	{ ShiftMask,            XK_F11,    spawn,          SHCMD("pamixer -u -d 5") },
-	{ ShiftMask,            XK_F12,    spawn,          SHCMD("pamixer -u -i 5") },
+	{ ShiftMask,            XK_F10,    spawn,          SHCMD("amixer -c 1 set Master toggle") },
+	{ ShiftMask,            XK_F11,    spawn,          SHCMD("amixer -c 1 set Master 5%- unmute") },
+	{ ShiftMask,            XK_F12,    spawn,          SHCMD("amixer -c 1 set Master 5%+ unmute") },
 	TAGKEYS(                XK_1,                      0)
 	TAGKEYS(                XK_2,                      1)
 	TAGKEYS(                XK_3,                      2)
