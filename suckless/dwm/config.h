@@ -4,11 +4,10 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=9" };
-static const char dmenufont[]       = "monospace:size=9";
+static const char *fonts[]          = { "Jetbrains Mono:size=10" };
+static const char dmenufont[]       = "Jetbrains Mono:size=10";
 static const char nord0[]           = "#2e3440";
 static const char nord1[]           = "#3b4252";
 static const char nord4[]           = "#d8dee9";
@@ -28,10 +27,8 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Firefox", NULL,     NULL,           0,         0,          0,          -1,        -1 },
-	{ "kitty",   NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class      instance    title       tags mask     isfloating   monitor */
+	{ NULL,     NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -60,7 +57,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, NULL };
-static const char *termcmd[]  = { "kitty" };
+static const char *termcmd[]  = { "alacritty" };
 
 static Key keys[] = {
 	/* modifier             key        function        argument */
@@ -85,6 +82,7 @@ static Key keys[] = {
 	{ ShiftMask,            XK_F10,    spawn,          SHCMD("amixer -c 1 set Master toggle") },
 	{ ShiftMask,            XK_F11,    spawn,          SHCMD("amixer -c 1 set Master 5%- unmute") },
 	{ ShiftMask,            XK_F12,    spawn,          SHCMD("amixer -c 1 set Master 5%+ unmute") },
+    { MODKEY,               XK_g,      spawn,          SHCMD("scrot") },
 	TAGKEYS(                XK_1,                      0)
 	TAGKEYS(                XK_2,                      1)
 	TAGKEYS(                XK_3,                      2)
