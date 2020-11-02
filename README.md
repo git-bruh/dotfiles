@@ -1,5 +1,6 @@
 # dotfiles
 
+![Screenshot](screenshot.png)
 ## Kernel patches
 
 ```
