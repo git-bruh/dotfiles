@@ -1,0 +1,96 @@
+#!/bin/sh -e
+
+o_flagsed() {
+    export CFLAGS="$(echo "$CFLAGS" | sed "$1")"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed "$1")"
+    export LDFLAGS="$(echo "$LDFLAGS" | sed "$1")"
+}
+
+o_nolto() {
+    log "$PKG" "optim workaround: LTO disabled"
+    o_flagsed "s/-flto=auto//g"
+}
+
+o_addflag() {
+    log "$PKG" "optim workaround: Flag added: $1"
+    o_flagsed "s/$/ $1/g"
+}
+
+o_delflag() {
+    log "$PKG" "optim workaround: Flag removed: $1"
+    o_flagsed "s/$1//g"
+}
+
+case "$TYPE" in
+    pre-build)
+        export _CFLAGS="$CFLAGS"
+        export _CXXFLAGS="$CXXFLAGS"
+        export _LDFLAGS="$LDFLAGS"
+
+        case "$PKG" in
+            alsa-lib | efivar)
+                o_addflag "-flto-partition=none" ;;
+
+            # Rust packages need this
+            bat | castor | cbindgen | exa | ripgrep)
+                o_addflag "-ffat-lto-objects" ;;
+
+            # Recently, some packages started requiring this, probably
+            # due to the statically linked Git package
+            libressl | zstd | zlib | curl)
+                o_addflag "-ffat-lto-objects" ;;
+
+            # These packages have custom configuration to enable LTO
+            ffmpeg | python)
+                o_nolto ;;
+
+            glibc) o_nolto ;;
+
+            # GCC uses custom configuration
+            gcc) o_nolto ;;
+
+            libaio) o_nolto ;;
+
+            # RUSTFLAGS will probably be the way to go if this
+            # bug gets fixed:
+            # https://github.com/rust-lang/rust/issues/49175
+            # "I'm going to close this as it's not feasible today
+            # and probably not something we'll want to do for
+            # quite some time if ever."
+            rust) o_nolto ;;
+
+            # Firefox uses custom configuration + clang
+            firefox)
+                o_nolto
+
+                # gcc: Compiler ICE
+                # clang: Unsupported
+                o_delflag "-fipa-pta"
+
+                # clang: Unsupported
+                o_delflag "-fdevirtualize-at-ltrans"
+                o_delflag "-fgraphite-identity"
+                o_delflag "-floop-nest-optimize"
+            ;;
+
+            llvm)
+                # This is more of a precaution than anything.
+                # LLVM takes *ages* to build, and I don't want to
+                # deal with it just in the off-chance gentoolto
+                # is incorrect and this flag is unneeded
+                o_nolto
+                o_delflag "-fno-semantic-interposition"
+
+                # Required for clang
+                # o_addflag "-ffat-lto-objects"
+            ;;
+        esac
+    ;;
+
+    post-build)
+        export CFLAGS="$_CFLAGS"
+        export CXXFLAGS="$_CFLAGS"
+        export LDFLAGS="$_LDFLAGS"
+    ;;
+
+esac
