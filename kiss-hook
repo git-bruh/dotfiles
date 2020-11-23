@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+# Stolen from https://git.ebc.li/kiss/optim
+
 o_flagsed() {
     export CFLAGS="$(echo "$CFLAGS" | sed "$1")"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed "$1")"
@@ -32,12 +34,12 @@ case "$TYPE" in
                 o_addflag "-flto-partition=none" ;;
 
             # Rust packages need this
-            bat | castor | cbindgen | exa | ripgrep)
+            alacritty | bat | castor | dust | cbindgen | exa | ripgrep)
                 o_addflag "-ffat-lto-objects" ;;
 
             # Recently, some packages started requiring this, probably
             # due to the statically linked Git package
-            libressl | zstd | zlib | curl)
+            libressl | lzo | zstd | zlib | curl)
                 o_addflag "-ffat-lto-objects" ;;
 
             # These packages have custom configuration to enable LTO
