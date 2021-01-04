@@ -15,7 +15,7 @@ KISS_PATH=$KISS_PATH:$HOME/kiss/community/community
 KISS_PATH=$KISS_PATH:$HOME/kiss/gcommunity/community
 KISS_PATH=$KISS_PATH:$HOME/kiss/kiss-repo/repo
 
-export FZF_DEFAULT_OPTS="--color=bw"
+export EDITOR=micro
 
 PATH=$PATH:$HOME/.local/bin
 
