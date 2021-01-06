@@ -35,7 +35,7 @@ case "$TYPE" in
 
             # Rust packages need this
             alacritty | bandwhich | bat | bottom | cbindgen | delta | diskonaut | dust | exa | fd | \
-            globe-cli | hexyl | hyperfine | lsd | onefetch | ox | procs | rage | ripgrep | spotifyd | tokei)
+            globe-cli | hexyl | hyperfine | lsd | onefetch | ox | procs | rage | rbw | ripgrep | spotifyd | tokei)
                 o_addflag "-ffat-lto-objects" ;;
 
             libressl | lzo | zstd | zlib | curl)
