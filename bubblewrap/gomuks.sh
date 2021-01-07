@@ -1,10 +1,12 @@
 #!/bin/sh -e
 
-. "$(dirname "$0")/flags.sh"
-
 bwrap \
-    $DEFFLAGS \
+    --dev /dev \
+    --symlink usr/lib /lib \
+    --ro-bind /usr/lib /usr/lib \
+    --ro-bind /usr/bin /usr/bin \
     --bind "$HOME/Downloads/gomuks" "$HOME/Downloads" \
+    --bind "$HOME/.cache/gomuks" "$HOME/.cache/gomuks" \
     --bind "$HOME/.config/gomuks" "$HOME/.config/gomuks" \
     --bind "$HOME/.local/share/gomuks" "$HOME/.local/share/gomuks" \
-    "env -i /usr/bin/gomuks"
+    /usr/bin/gomuks
