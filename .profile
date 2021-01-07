@@ -19,3 +19,4 @@ export EDITOR=micro
 PATH="$HOME/git/dotfiles/bin:$PATH"
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" == /dev/tty1 ]; then exec startx -- -dpi 120; fi
+# if [ -z "$DISPLAY" ] && [ "$(tty)" == /dev/tty1 ]; then exec startx -- -dpi 120; fi
