@@ -1,0 +1,26 @@
+#!/bin/sh
+
+xinitrc() {
+    export DISPLAY=:0
+
+    feh --bg-center ~/dwm_nord.png &
+
+    slstatus &
+
+    exec dwm
+}
+
+trap xinitrc USR1
+
+(
+    trap '' USR1
+
+    X -ardelay 200 \
+      -arinterval 20 \
+      -dpms \
+      -dpi 120 \
+      -nolisten tcp \
+      :0 vt1
+) &
+
+wait

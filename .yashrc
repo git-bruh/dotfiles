@@ -1,0 +1,54 @@
+##### Sample Yashrc #####
+# This is a sample initialization script for yash. Copy this file to ~/.yashrc
+# and add your favorite customization to it.
+
+
+# Firstly, load the common customization script.
+# If you don't like settings applied in this script, remove this line.
+. --autoload --no-alias initialization/common
+
+# These are additional aliases that are not defined in the common script.
+# Uncomment to enable them.
+#alias g='grep'
+#alias l='$PAGER'
+#alias --global L='|$PAGER'
+#alias --global N='>/dev/null 2>&1' N1='>/dev/null' N2='2>/dev/null'
+
+# Uncomment to enable direnv support. (jq required)
+#_update_direnv() {
+#  eval "$(
+#    direnv export json |
+#    jq -r 'to_entries | .[] |
+#    if .value == null then
+#      @sh "unset \(.key)"
+#    else
+#      @sh "export \(.key)=\(.value)"
+#    end'
+#  )"
+#}
+#_update_direnv
+#YASH_AFTER_CD=("$YASH_AFTER_CD" '_update_direnv')
+
+# And add your own customization below.
+
+export CFLAGS="-O3 -pipe -march=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize"
+export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-Wl,-O1 -Wl,--as-needed $CFLAGS"
+export MAKEFLAGS="-j12"
+
+export KISS_PATH=""
+export KISS_HOOK="$HOME/kiss/kiss-hook"
+export KISS_TMPDIR=/tmp
+KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/optim"
+KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
+KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
+KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/extra"
+KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/xorg"
+KISS_PATH="$KISS_PATH:$HOME/kiss/community/community"
+KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
+KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
+
+export EDITOR=micro
+PATH="$HOME/git/dotfiles/bin:$PATH"
+
+[ "$(tty)" = /dev/tty1 ] && startx
