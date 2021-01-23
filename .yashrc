@@ -51,4 +51,4 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
 export EDITOR=micro
 PATH="$HOME/git/dotfiles/bin:$PATH"
 
-[ "$(tty)" = /dev/tty1 ] && startx
+if [ "$(tty)" = /dev/tty1 ]; then exec startx; fi
