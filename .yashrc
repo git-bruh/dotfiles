@@ -31,13 +31,11 @@
 
 # And add your own customization below.
 
-export CFLAGS="-O3 -pipe -march=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize"
+export CFLAGS="-O2 -pipe -march=native"
 export CXXFLAGS="$CFLAGS"
-export LDFLAGS="-Wl,-O1 -Wl,--as-needed $CFLAGS"
 export MAKEFLAGS="-j12"
 
 export KISS_PATH=""
-export KISS_HOOK="$HOME/kiss/kiss-hook"
 export KISS_TMPDIR=/tmp
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/optim"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
@@ -49,6 +47,6 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
 
 export EDITOR=micro
-PATH="$HOME/git/dotfiles/bin:$PATH"
+PATH="/usr/lib/ccache/bin:$HOME/git/dotfiles/bin:$PATH"
 
-if [ "$(tty)" = /dev/tty1 ]; then exec startx; fi
+if [ "$(tty)" = /dev/tty1 ]; then startx; fi
