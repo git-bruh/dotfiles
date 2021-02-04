@@ -1,0 +1,56 @@
+#!/bin/sh
+
+network_file="/etc/network/interfaces"
+metadata_file="/mnt/digitalocean_meta_data.json"
+
+hostname="$(jq -jre '.hostname' $metadata_file 2>/dev/null)" && echo "$hostname" > /etc/hostname
+
+echo "auto lo" > "$network_file"
+echo "iface lo inet loopback" >> "$network_file"
+
+ip_addr="$(jq -jre '.interfaces.public[0].ipv4.ip_address' $metadata_file 2>/dev/null)"
+ip_netmask="$(jq -jre '.interfaces.public[0].ipv4.netmask' $metadata_file 2>/dev/null)"
+ip_gateway="$(jq -jre '.interfaces.public[0].ipv4.gateway' $metadata_file 2>/dev/null)"
+
+echo "
+
+auto eth0
+iface eth0 inet static
+    address $ip_addr
+    netmask $ip_netmask
+    gateway $ip_gateway
+" >> "$network_file"
+
+ip_addr="$(jq -jre '.interfaces.public[0].ipv6.ip_address' $metadata_file 2>/dev/null)"
+ip_error=$?
+ip_cidr="$(jq -jre '.interfaces.public[0].ipv6.cidr' $metadata_file 2>/dev/null)"
+ip_gateway="$(jq -jre '.interfaces.public[0].ipv6.gateway' $metadata_file 2>/dev/null)"
+
+if [ $ip_error -eq 0 ] && [ -n "$ip_addr" ]; then
+	modprobe ipv6
+
+    echo "
+
+iface eth0 inet6 static
+    address $ip_addr
+    netmask $ip_cidr
+    gateway $ip_gateway
+    pre-up echo 0 > /proc/sys/net/ipv6/conf/eth0/accept_ra    
+" >> "$network_file"
+fi
+
+ip_addr="$(jq -jre '.interfaces.private[0].ipv4.ip_address' $metadata_file 2>/dev/null)"
+ip_error=$?
+ip_netmask="$(jq -jre '.interfaces.private[0].ipv4.netmask' $metadata_file 2>/dev/null)"
+
+if [ $ip_error -eq 0 ] && [ -n "$ip_addr" ]; then
+    echo "
+
+auto eth1
+iface eth1 inet static
+    address $ip_addr
+    netmask $ip_netmask
+" >> "$network_file"
+fi
+
+ifup -a
