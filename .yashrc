@@ -1,3 +1,5 @@
+#!/bin/sh
+
 ##### Sample Yashrc #####
 # This is a sample initialization script for yash. Copy this file to ~/.yashrc
 # and add your favorite customization to it.
@@ -47,6 +49,8 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
 
 export EDITOR=micro
+export POSIXLY_CORRECT=1
+
 PATH="/usr/lib/ccache/bin:$HOME/git/dotfiles/bin:$PATH"
 
-if [ "$(tty)" = /dev/tty1 ]; then startx; fi
+if [ "$(tty)" = /dev/tty1 ]; then exec startx; fi
