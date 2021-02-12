@@ -1,37 +1,6 @@
 #!/bin/sh
 
-##### Sample Yashrc #####
-# This is a sample initialization script for yash. Copy this file to ~/.yashrc
-# and add your favorite customization to it.
-
-
-# Firstly, load the common customization script.
-# If you don't like settings applied in this script, remove this line.
 . --autoload --no-alias initialization/common
-
-# These are additional aliases that are not defined in the common script.
-# Uncomment to enable them.
-#alias g='grep'
-#alias l='$PAGER'
-#alias --global L='|$PAGER'
-#alias --global N='>/dev/null 2>&1' N1='>/dev/null' N2='2>/dev/null'
-
-# Uncomment to enable direnv support. (jq required)
-#_update_direnv() {
-#  eval "$(
-#    direnv export json |
-#    jq -r 'to_entries | .[] |
-#    if .value == null then
-#      @sh "unset \(.key)"
-#    else
-#      @sh "export \(.key)=\(.value)"
-#    end'
-#  )"
-#}
-#_update_direnv
-#YASH_AFTER_CD=("$YASH_AFTER_CD" '_update_direnv')
-
-# And add your own customization below.
 
 export CFLAGS="-O2 -pipe -march=native"
 export CXXFLAGS="$CFLAGS"
@@ -49,8 +18,9 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
 
 export EDITOR=micro
-export POSIXLY_CORRECT=1
 
 PATH="/usr/lib/ccache/bin:$HOME/git/dotfiles/bin:$PATH"
+
+alias ssu="POSIXLY_CORRECT=1 ssu"
 
 if [ "$(tty)" = /dev/tty1 ]; then exec startx; fi
