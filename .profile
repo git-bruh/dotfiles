@@ -4,9 +4,9 @@ export CFLAGS="-O2 -pipe -march=native"
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j12"
 
-export KISS_PATH=""
 export KISS_TMPDIR=/tmp
-KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/optim"
+export KISS_HOOK="$HOME/kiss/kiss-hook"
+KISS_PATH="$HOME/kiss/kiss-repo/optim"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/extra"
@@ -19,7 +19,5 @@ export PS1="-> "
 export EDITOR=micro
 
 PATH="/usr/lib/ccache/bin:$HOME/git/dotfiles/bin:$PATH"
-
-alias ssu="POSIXLY_CORRECT=1 ssu"
 
 if [ "$(tty)" = /dev/tty1 ]; then exec startx -- -dpi 120 -ardelay 200 -arinterval 20; fi
