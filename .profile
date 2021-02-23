@@ -4,9 +4,10 @@ export CFLAGS="-O2 -pipe -march=native"
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j12"
 
+export KISS_PATH=
 export KISS_TMPDIR=/tmp
 export KISS_HOOK="$HOME/kiss/kiss-hook"
-KISS_PATH="$HOME/kiss/kiss-repo/optim"
+KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/optim"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/extra"
