@@ -1,11 +1,17 @@
 #!/bin/sh -e
 
-# Stolen (mostly) from https://git.ebc.li/kiss/optim
-
 flagsed() {
-    export CFLAGS="$(echo "$CFLAGS" | sed "$1")"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed "$1")"
-    export LDFLAGS="$(echo "$LDFLAGS" | sed "$1")"
+    export CFLAGS="$(printf %s "$CFLAGS" | sed "$1")"
+    export CXXFLAGS="$(printf %s "$CXXFLAGS" | sed "$1")"
+    export LDFLAGS="$(printf %s "$LDFLAGS" | sed "$1")"
+}
+
+saneflags() {
+    log "$PKG" "Using sane build flags"
+
+    export CFLAGS="-O2 -pipe -march=native"
+    export CXXFLAGS="$CFLAGS"
+    export LDFLAGS="$LDFLAGS"
 }
 
 nolto() {
@@ -50,27 +56,13 @@ case "$TYPE" in
             # These packages have custom configuration to enable LTO
             ffmpeg | gcc | python) nolto ;;
 
-            glibc) nolto ;;
+            # Don't bother optimising this cruft
+            chromium | glibc | rust | llvm) saneflags ;;
 
-            # RUSTFLAGS will probably be the way to go if this
-            # bug gets fixed:
-            # https://github.com/rust-lang/rust/issues/49175
-            # "I'm going to close this as it's not feasible today
-            # and probably not something we'll want to do for
-            # quite some time if ever."
-            rust) nolto ;;
-
-            llvm)
-                # LTO broken for now
-                nolto
-                delflag "-fno-semantic-interposition"
-
-                # Required for clang
-                # addflag "-ffat-lto-objects"
-            ;;
-
-            # Statically link a few packages against a sane C library.
-            axel | busybox | htop | less | mdevd | ncurses | oksh | runit | skalibs | ssu)
+            # Statically link a few packages against a sane C library
+            9base | busybox | e2fsprogs | gzip      | htop  | less  | m4    | mdevd   | \
+            mdevd | make    | ncurses   | nawk-git  | oksh  | runit | sbase | skalibs | \
+            ssu   | toybox  | ubase)
                 musl ;;
             *)
                 [ -f "$repo_dir/depends" ] && grep rust "$repo_dir/depends" && addflag "-ffat-lto-objects" ;;
