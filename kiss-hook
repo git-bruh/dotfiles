@@ -60,9 +60,8 @@ case "$TYPE" in
             chromium | glibc | rust | llvm) saneflags ;;
 
             # Statically link a few packages against a sane C library
-            9base   | busybox | e2fsprogs | gzip  | htop  | less  | m4      | mdevd   | \
-            make    | ncurses | nawk-git  | oksh  | runit | sbase | skalibs | ssu     | \
-            toybox  | ubase)
+            busybox   | e2fsprogs | gzip  | htop  | less    | m4  | mdevd | make | \
+            nawk-git  | oksh      | runit | sbase | skalibs | ssu | ubase)
                 musl ;;
             *)
                 [ -f "$repo_dir/depends" ] && grep rust "$repo_dir/depends" && addflag "-ffat-lto-objects" ;;
