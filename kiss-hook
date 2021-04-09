@@ -57,11 +57,15 @@ case "$TYPE" in
             ffmpeg | gcc | python) nolto ;;
 
             # Don't bother optimising this cruft
-            chromium | glibc | rust | llvm) saneflags ;;
+            chromium)
+            	saneflags
+            	export PATH="/usr/lib/ccache/bin:$PATH"
+            ;;
+            glibc | rust | llvm) saneflags ;;
 
             # Statically link a few packages against a sane C library
-            busybox   | e2fsprogs | gzip  | htop  | less    | m4  | mdevd | make | \
-            nawk-git  | oksh      | runit | sbase | skalibs | ssu | ubase)
+            busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
+            mksh    | nawk-git  | oksh | runit | sbase | skalibs | ssu   | ubase)
                 musl ;;
             *)
                 [ -f "$repo_dir/depends" ] && grep rust "$repo_dir/depends" && addflag "-ffat-lto-objects" ;;
