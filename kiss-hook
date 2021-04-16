@@ -60,13 +60,19 @@ case "$TYPE" in
             chromium)
             	saneflags
             	export PATH="/usr/lib/ccache/bin:$PATH"
-            ;;
+                ;;
             glibc | rust | llvm) saneflags ;;
 
             # Statically link a few packages against a sane C library
             busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
             mksh    | nawk-git  | oksh | runit | sbase | skalibs | ssu   | ubase)
                 musl ;;
+
+            lib32-*)
+                export CC="gcc -m32"
+                export CXX="g++ -m32"
+                export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+                ;;
             *)
                 [ -f "$repo_dir/depends" ] && grep rust "$repo_dir/depends" && addflag "-ffat-lto-objects" ;;
         esac
@@ -82,12 +88,20 @@ case "$TYPE" in
         export CXXFLAGS="$_CFLAGS"
         export LDFLAGS="$_LDFLAGS"
 
+        case "$PKG" in
+            lib32-*)
+                rm -rf "$3/etc" \
+                       "$3/usr/bin" \
+                       "$3/usr/include" \
+                       "$3/usr/share"
+            ;;
+        esac
+
         rm -rf  "$3/usr/share/gettext" \
                 "$3/usr/share/polkit-1" \
-                "$3/usr/share/locale" \
                 "$3/usr/share/info" \
-                "$3/usr/share/i18n" \
-                "$3/usr/lib/gconv"
+                "$3/usr/share/locale" \
+                "$3/usr/lib"*"/gconv"
 
         IFS=. read -r _end _ < /proc/uptime
 
