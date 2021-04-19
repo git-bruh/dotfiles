@@ -9,6 +9,5 @@ mkdir -p "$STEAMHOME"
 bwrap \
 	$DEFFLAGS \
 	--bind "$STEAMHOME" "$HOME" \
-	--ro-bind-try "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-3.0" \
 	--bind /mnt/games /mnt/games \
 	/usr/bin/steam
