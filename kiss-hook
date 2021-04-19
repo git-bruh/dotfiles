@@ -33,6 +33,8 @@ delflag() {
 }
 
 musl() {
+    kiss list musl
+
     log "$PKG" "Using musl-gcc"
 
     addflag "-static"
@@ -41,7 +43,7 @@ musl() {
 
 case "$TYPE" in
     pre-build)
-        export _CC="${CC:=gcc}"
+        export _CC="${CC:-gcc}"
         export _CFLAGS="$CFLAGS"
         export _CXXFLAGS="$CXXFLAGS"
         export _LDFLAGS="$LDFLAGS"
@@ -50,7 +52,7 @@ case "$TYPE" in
             alsa-lib | efivar)
                 addflag "-flto-partition=none" ;;
 
-            curl | libressl | lzo | zlib | zstd)
+            curl | libressl | lzo | ncurses | zlib | zstd)
                 addflag "-ffat-lto-objects" ;;
 
             # These packages have custom configuration to enable LTO
@@ -61,7 +63,7 @@ case "$TYPE" in
             	saneflags
             	export PATH="/usr/lib/ccache/bin:$PATH"
                 ;;
-            glibc | rust | llvm) saneflags ;;
+            glibc | llvm | rust) saneflags ;;
 
             # Statically link a few packages against a sane C library
             busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
@@ -89,6 +91,7 @@ case "$TYPE" in
         export LDFLAGS="$_LDFLAGS"
 
         case "$PKG" in
+            lib32-glibc) ;;
             lib32-*)
                 rm -rf "$3/etc" \
                        "$3/usr/bin" \
