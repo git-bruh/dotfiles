@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Rootlessly enter a KISS build chroot, requires write access to the chroot path.
+# /tmp is bind mounted to allow access to X and share test packages.
+
+# $1: Path to the chroot.
+# $2: Path to the cache to be shared with the chroot.
+
+USER=build
+HOME="/home/$USER"
+
+bwrap \
+	--bind "$1" / \
+	--bind /tmp /tmp \
+	--bind "${2:-/mnt/kiss/sources}" "$HOME/.cache/kiss/sources" \
+	--ro-bind /etc/resolv.conf /etc/resolv.conf \
+	--dev /dev \
+	--proc /proc \
+	--tmpfs /run \
+	--unshare-all \
+	--share-net \
+	--die-with-parent \
+	env -i \
+		SHELL=/bin/sh \
+		HOME="$HOME" \
+		TERM="$TERM" \
+		USER="$USER" \
+		/bin/sh -l

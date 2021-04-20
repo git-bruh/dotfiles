@@ -5,6 +5,8 @@ export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-O1 -Wl,--as-needed $CFLAGS"
 export MAKEFLAGS="-j12"
 
+export CMAKE_GENERATOR=Ninja
+
 export KISS_PATH=
 export KISS_TMPDIR=/tmp
 export KISS_HOOK="$HOME/kiss/kiss-hook"
