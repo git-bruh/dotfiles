@@ -59,11 +59,7 @@ case "$TYPE" in
             ffmpeg | gcc | python) nolto ;;
 
             # Don't bother optimising this cruft
-            chromium)
-            	saneflags
-            	export PATH="/usr/lib/ccache/bin:$PATH"
-                ;;
-            glibc | llvm | rust) saneflags ;;
+            chromium | glibc | llvm | rust) saneflags ;;
 
             # Statically link a few packages against a sane C library
             busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
