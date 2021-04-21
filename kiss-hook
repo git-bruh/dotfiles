@@ -58,6 +58,9 @@ case "$TYPE" in
             # These packages have custom configuration to enable LTO
             ffmpeg | gcc | python) nolto ;;
 
+            # Broken
+            strace) nolto ;;
+
             # Don't bother optimising this cruft
             chromium | glibc | llvm | rust) saneflags ;;
 

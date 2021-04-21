@@ -25,4 +25,5 @@ DEFFLAGS="
 	--setenv DISPLAY ${DISPLAY:-:0}
 	--setenv PATH /usr/bin
 	--die-with-parent
+	--new-session
 "
