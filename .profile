@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CFLAGS="-O3 -pipe -march=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize"
+export CFLAGS="-O3 -pipe -march=native -mtune=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-O1 -Wl,--as-needed $CFLAGS"
 export MAKEFLAGS="-j12"

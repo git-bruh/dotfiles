@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DEFFLAGS="
+	--ro-bind /etc/asound.conf /etc/asound.conf
 	--ro-bind /etc/fonts /etc/fonts
 	--ro-bind /etc/ld.so.cache /etc/ld.so.cache
 	--ro-bind /etc/ssl /etc/ssl
@@ -11,6 +12,7 @@ DEFFLAGS="
 	--symlink usr/lib /lib64
 	--ro-bind-try $HOME/.config/gtk-3.0 $HOME/.config/gtk-3.0
 	--dev /dev
+	--dev-bind /dev/snd /dev/snd
 	--dev-bind /dev/nvidia-modeset /dev/nvidia-modeset
 	--dev-bind /dev/nvidia0 /dev/nvidia0
 	--dev-bind /dev/nvidiactl /dev/nvidiactl
