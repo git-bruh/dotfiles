@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CFLAGS="-O3 -pipe -march=native -mtune=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize"
+export CFLAGS="-O3 -pipe -march=native -mtune=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize -fuse-ld=gold"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-O1 -Wl,--as-needed $CFLAGS"
 export MAKEFLAGS="-j12"
@@ -10,8 +10,8 @@ export CMAKE_GENERATOR=Ninja
 export KISS_PATH=
 export KISS_TMPDIR=/tmp
 export KISS_HOOK="$HOME/kiss/kiss-hook"
-KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/optim"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
+KISS_PATH="$KISS_PATH:$HOME/kiss/kissLTO/repo"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/multilib/core"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/multilib/extra"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/multilib/xorg"

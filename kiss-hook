@@ -1,9 +1,13 @@
 #!/bin/sh -e
 
 flagsed() {
-    export CFLAGS="$(printf %s "$CFLAGS" | sed "$1")"
-    export CXXFLAGS="$(printf %s "$CXXFLAGS" | sed "$1")"
-    export LDFLAGS="$(printf %s "$LDFLAGS" | sed "$1")"
+    CFLAGS="$(printf %s "$CFLAGS" | sed "$1")"
+    CXXFLAGS="$(printf %s "$CXXFLAGS" | sed "$1")"
+    LDFLAGS="$(printf %s "$LDFLAGS" | sed "$1")"
+
+    export CFLAGS
+    export CXXFLAGS
+    export LDFLAGS
 }
 
 saneflags() {
@@ -17,19 +21,19 @@ saneflags() {
 nolto() {
     log "$PKG" "LTO disabled"
 
-    flagsed "s/-flto=auto//g"
+    flagsed "s/-flto=auto//"
 }
 
 addflag() {
     log "$PKG" "Flag added: $1"
 
-    flagsed "s/$/ $1/g"
+    flagsed "s/$/ $1/"
 }
 
 delflag() {
     log "$PKG" "Flag removed: $1"
 
-    flagsed "s/$1//g"
+    flagsed "s/$1//"
 }
 
 musl() {
@@ -52,10 +56,10 @@ case "$TYPE" in
             alsa-lib | efivar)
                 addflag "-flto-partition=none" ;;
 
-            curl | libressl | lua | lzo | ncurses | zlib | zstd)
+            curl | libressl | llvm | lua | lzo | ncurses | zlib | zstd)
                 addflag "-ffat-lto-objects" ;;
 
-            # These packages have custom configuration to enable LTO
+            # These packages have custom configuration to enable LTO.
             ffmpeg | gcc | python) nolto ;;
 
             # ICE:
@@ -66,32 +70,38 @@ case "$TYPE" in
                 nolto
             ;;
 
-            # Custom configuration + clang
+            # Custom configuration + clang.
             firefox)
+                nolto
+                # Unsupported flags.
                 delflag "-fipa-pta"
                 delflag "-fdevirtualize-at-ltrans"
                 delflag "-fgraphite-identity"
                 delflag "-floop-nest-optimize"
             ;;
 
-            # Broken
-            strace | musl | webkit2gtk) nolto ;;
+            # Broken.
+            musl | nodejs | strace | webkit2gtk) nolto ;;
 
-            # Don't bother optimising this cruft
-            glibc | llvm | rust) saneflags ;;
+            # Don't bother optimising this cruft.
+            glibc | rust) saneflags ;;
 
             # Statically link a few packages against a sane C library
             busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
             mksh    | nawk-git  | oksh | runit | sbase | skalibs | ssu   | ubase)
-                musl ;;
+                musl
+            ;;
 
             lib32-*)
                 export CC="gcc -m32"
                 export CXX="g++ -m32"
                 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-                ;;
+            ;;
+
             *)
-                [ -f "$repo_dir/depends" ] && grep rust "$repo_dir/depends" && addflag "-ffat-lto-objects" ;;
+                if grep rust "$repo_dir/depends" > /dev/null 2>&1; then
+                    addflag "-ffat-lto-objects"
+                fi
         esac
 
         IFS=. read -r _start _ < /proc/uptime
