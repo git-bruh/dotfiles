@@ -47,7 +47,6 @@ musl() {
 
 case "$TYPE" in
     pre-build)
-        export _CC="${CC:-gcc}"
         export _CFLAGS="$CFLAGS"
         export _CXXFLAGS="$CXXFLAGS"
         export _LDFLAGS="$LDFLAGS"
@@ -81,7 +80,7 @@ case "$TYPE" in
             ;;
 
             # Broken.
-            musl | nodejs | strace | webkit2gtk) nolto ;;
+            libbsd | musl | nodejs | strace | webkit2gtk) nolto ;;
 
             # Don't bother optimising this cruft.
             glibc | rust) saneflags ;;
@@ -90,12 +89,6 @@ case "$TYPE" in
             busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
             mksh    | nawk-git  | oksh | runit | sbase | skalibs | ssu   | ubase)
                 musl
-            ;;
-
-            lib32-*)
-                export CC="gcc -m32"
-                export CXX="g++ -m32"
-                export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
             ;;
 
             *)
@@ -110,26 +103,15 @@ case "$TYPE" in
     post-build)
         : "${DEST:?DEST is unset}"
 
-        export CC="$_CC"
         export CFLAGS="$_CFLAGS"
         export CXXFLAGS="$_CFLAGS"
         export LDFLAGS="$_LDFLAGS"
-
-        case "$PKG" in
-            lib32-glibc) ;;
-            lib32-*)
-                rm -rf "$3/etc" \
-                       "$3/usr/bin" \
-                       "$3/usr/include" \
-                       "$3/usr/share"
-            ;;
-        esac
 
         rm -rf  "$3/usr/share/gettext" \
                 "$3/usr/share/polkit-1" \
                 "$3/usr/share/info" \
                 "$3/usr/share/locale" \
-                "$3/usr/lib"*"/gconv"
+                "$3/usr/lib/gconv"
 
         IFS=. read -r _end _ < /proc/uptime
 
