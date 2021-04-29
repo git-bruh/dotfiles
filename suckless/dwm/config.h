@@ -8,15 +8,15 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Jetbrains Mono:size=10" };
 static const char dmenufont[]       = "Jetbrains Mono:size=10";
-static const char nord0[]           = "#2e3440";
-static const char nord1[]           = "#3b4252";
-static const char nord4[]           = "#d8dee9";
-static const char nord6[]           = "#eceff4";
-static const char nord10[]          = "#5e81ac";
+static const char gray1[]           = "#fdf1c7";
+static const char gray2[]           = "#ebdbb2";
+static const char gray3[]           = "#3c3836";
+static const char gray4[]           = "#282828";
+static const char cyan[]            = "#fabd2f";
 static const char *colors[][3]      = {
 	/*               fg     bg       border */
-	[SchemeNorm] = { nord4, nord0,   nord1  },
-	[SchemeSel]  = { nord6, nord10,  nord10 },
+	[SchemeNorm] = { gray3, gray1, gray2  },
+	[SchemeSel]  = { gray4, cyan, cyan },
 }
 
 ;/* tagging */
@@ -82,7 +82,7 @@ static Key keys[] = {
 	{ ShiftMask,            XK_F10,    spawn,          SHCMD("amixer -c 1 set Master toggle") },
 	{ ShiftMask,            XK_F11,    spawn,          SHCMD("amixer -c 1 set Master 5%- unmute") },
 	{ ShiftMask,            XK_F12,    spawn,          SHCMD("amixer -c 1 set Master 5%+ unmute") },
-    { MODKEY,               XK_g,      spawn,          SHCMD("scrot") },
+	{ MODKEY,               XK_g,      spawn,          SHCMD("scrot") },
 	TAGKEYS(                XK_1,                      0)
 	TAGKEYS(                XK_2,                      1)
 	TAGKEYS(                XK_3,                      2)
