@@ -1,0 +1,16 @@
+#!/bin/sh
+
+. "$(dirname "$0")/flags.sh"
+
+mkdir -p "$HOME/.config/gh"
+
+[ -d "$PWD/.git" ] || {
+	printf "Must be run inside a git repository.\n"
+	exit 1
+}
+
+bwrap \
+	$DEFFLAGS \
+	--bind "$HOME/.config/gh" "$HOME/.config/gh" \
+	--bind "$PWD" "$PWD" \
+	/usr/bin/gh "$@"
