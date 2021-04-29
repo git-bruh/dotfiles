@@ -92,7 +92,7 @@ case "$TYPE" in
             ;;
 
             # Broken.
-            nodejs | strace | webkit2gtk | xorg-server) nolto ;;
+            git | nodejs | python2 | strace | webkit2gtk | xorg-server) nolto ;;
 
             # Don't bother optimising this cruft.
             glibc | rust) saneflags ;;
