@@ -9,12 +9,10 @@ export CMAKE_GENERATOR=Ninja
 
 export KISS_PATH=
 export KISS_TMPDIR=/tmp
+export KISS_COMPRESS=xz
 export KISS_HOOK="$HOME/kiss/kiss-hook"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kissLTO/repo"
-KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/multilib/core"
-KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/multilib/extra"
-KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/multilib/xorg"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/xorg"

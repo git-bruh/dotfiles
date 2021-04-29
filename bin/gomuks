@@ -1,0 +1,16 @@
+#!/bin/sh
+
+. "$(dirname "$0")/flags.sh"
+
+mkdir -p "$HOME/.config/gomuks" "$HOME/.cache/gomuks" \
+	 "$HOME/.local/share/gomuks" "$HOME/Downloads/gomuks"
+
+DEFFLAGS="$(printf "%s" "$DEFFLAGS" | sed 's/--new-session//')"
+
+bwrap \
+	$DEFFLAGS \
+	--bind "$HOME/.cache/gomuks" "$HOME/.cache/gomuks" \
+	--bind "$HOME/.config/gomuks" "$HOME/.config/gomuks" \
+	--bind "$HOME/.local/share/gomuks" "$HOME/.local/share/gomuks" \
+	--bind "$HOME/Downloads/gomuks" "$HOME/Downloads" \
+	/usr/bin/gomuks

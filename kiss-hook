@@ -47,6 +47,7 @@ musl() {
 
 case "$TYPE" in
     pre-build)
+        export _CC="${CC:-cc}"
         export _CFLAGS="$CFLAGS"
         export _CXXFLAGS="$CXXFLAGS"
         export _LDFLAGS="$LDFLAGS"
@@ -59,7 +60,13 @@ case "$TYPE" in
                 addflag "-ffat-lto-objects" ;;
 
             # These packages have custom configuration to enable LTO.
-            ffmpeg | gcc | python) nolto ;;
+            ffmpeg | python) nolto ;;
+
+            # Custom configuration.
+            gcc)
+                nolto
+                delflag "-fipa-pta"
+            ;;
 
             # ICE:
             # during IPA pass: static-var
@@ -79,8 +86,13 @@ case "$TYPE" in
                 delflag "-floop-nest-optimize"
             ;;
 
+            musl)
+                 nolto
+                 delflag "-fuse-ld=gold"
+            ;;
+
             # Broken.
-            libbsd | musl | nodejs | strace | webkit2gtk) nolto ;;
+            nodejs | strace | webkit2gtk | xorg-server) nolto ;;
 
             # Don't bother optimising this cruft.
             glibc | rust) saneflags ;;
@@ -103,6 +115,7 @@ case "$TYPE" in
     post-build)
         : "${DEST:?DEST is unset}"
 
+        export CC="$_CC"
         export CFLAGS="$_CFLAGS"
         export CXXFLAGS="$_CFLAGS"
         export LDFLAGS="$_LDFLAGS"
