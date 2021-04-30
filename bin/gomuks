@@ -13,4 +13,4 @@ bwrap \
 	--bind "$HOME/.config/gomuks" "$HOME/.config/gomuks" \
 	--bind "$HOME/.local/share/gomuks" "$HOME/.local/share/gomuks" \
 	--bind "$HOME/Downloads/gomuks" "$HOME/Downloads" \
-	/usr/bin/gomuks
+	/usr/bin/gomuks "$@"

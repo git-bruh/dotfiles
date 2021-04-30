@@ -1,0 +1,14 @@
+#!/bin/sh
+
+. "$(dirname "$0")/flags.sh"
+
+mkdir -p "$HOME/.config/rbw" "$HOME/.cache/rbw" \
+	 "$HOME/.local/share/rbw"
+
+bwrap \
+	$DEFFLAGS \
+	--dev-bind /dev/pts /dev/pts \
+	--bind "$HOME/.cache/rbw" "$HOME/.cache/rbw" \
+	--bind "$HOME/.config/rbw" "$HOME/.config/rbw" \
+	--bind "$HOME/.local/share/rbw" "$HOME/.local/share/rbw" \
+	/usr/bin/rbw "$@"
