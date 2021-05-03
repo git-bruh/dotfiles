@@ -8,16 +8,16 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Jetbrains Mono:size=10" };
 static const char dmenufont[]       = "Jetbrains Mono:size=10";
-static const char gray1[]           = "#fdf1c7";
-static const char gray2[]           = "#ebdbb2";
-static const char gray3[]           = "#3c3836";
-static const char gray4[]           = "#282828";
-static const char cyan[]            = "#fabd2f";
+static const char col_gray1[]       = "#282a36";
+static const char col_gray2[]       = "#ffb86c";
+static const char col_gray3[]       = "#ff79c6";
+static const char col_gray4[]       = "#ffb86c";
+static const char col_cyan[]        = "#282a36";
 static const char *colors[][3]      = {
-	/*               fg     bg       border */
-	[SchemeNorm] = { gray3, gray1, gray2  },
-	[SchemeSel]  = { gray4, cyan, cyan },
-}
+    /*               fg         bg         border   */
+    [SchemeNorm] = { col_gray3, col_gray1, col_cyan },
+    [SchemeSel]  = { col_gray4, col_cyan,  col_gray2  },
+};
 
 ;/* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };

@@ -10,9 +10,9 @@ static int topbar = 1;                      /* -b  option; if 0, dmenu appears a
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#ebdbb2", "#282828" },
-	[SchemeSel] = { "#ebdbb2", "#98971a" },
-	[SchemeOut] = { "#ebdbb2", "#8ec07c" },
+	[SchemeNorm] = { "#ff79c6", "#282a36" },
+	[SchemeSel] = { "#ffb86c", "#282a36" },
+	[SchemeOut] = { "#ffb86c", "#282a36" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
