@@ -21,7 +21,7 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
 
 export PS1="-> "
-export EDITOR=vis
+export EDITOR=vi
 
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
 

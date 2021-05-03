@@ -4,10 +4,12 @@
 
 mkdir -p "$HOME/.config/gh"
 
-[ -d "$PWD/.git" ] || {
+[ -d .git ] || {
 	printf "Must be run inside a git repository.\n"
 	exit 1
 }
+
+DEFFLAGS="$(printf "%s" "$DEFFLAGS" | sed 's/--new-session//')"
 
 bwrap \
 	$DEFFLAGS \
