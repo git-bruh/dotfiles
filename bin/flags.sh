@@ -3,7 +3,6 @@
 DEFFLAGS="
 	--ro-bind /etc/asound.conf /etc/asound.conf
 	--ro-bind /etc/fonts /etc/fonts
-	--ro-bind /etc/ld.so.cache /etc/ld.so.cache
 	--ro-bind /etc/resolv.conf /etc/resolv.conf
 	--ro-bind /etc/ssl /etc/ssl
 	--ro-bind /usr /usr

@@ -2,12 +2,18 @@
 
 . "$(dirname "$0")/flags.sh"
 
+GAMESDIR="${GAMESDIR:-/mnt/games}"
+
 STEAMHOME="$HOME/steam"
+STEAMROOT="${STEAMROOT:-/mnt/subvolumes/void}"
 
 mkdir -p "$STEAMHOME"
 
 bwrap \
 	$DEFFLAGS \
+	--ro-bind "$STEAMROOT/etc/ld.so.cache" /etc/ld.so.cache \
+	--ro-bind "$STEAMROOT/etc/ssl" /etc/ssl \
+	--ro-bind "$STEAMROOT/usr" /usr \
+	--bind "$GAMESDIR" "$GAMESDIR" \
 	--bind "$STEAMHOME" "$HOME" \
-	--bind /mnt/games /mnt/games \
-	/usr/bin/steam
+	/usr/bin/steam "$@"
