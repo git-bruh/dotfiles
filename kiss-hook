@@ -56,13 +56,12 @@ case "$TYPE" in
             alsa-lib | efivar)
                 addflag "-flto-partition=none" ;;
 
-            curl | libressl | libtermkey | llvm | lua | lzo | ncurses | zlib | zstd)
+            curl | libressl | libtermkey | lua | lzo | ncurses | zlib | zstd)
                 addflag "-ffat-lto-objects" ;;
 
             # These packages have custom configuration to enable LTO.
             ffmpeg | python) nolto ;;
 
-            # Custom configuration.
             gcc)
                 nolto
                 delflag "-fipa-pta"
@@ -76,13 +75,15 @@ case "$TYPE" in
             # during IPA pass: static-var
             # lto1: internal compiler error: in lto_output_node, at lto-cgraph.c:447
             chromium)
-                delflag "-fdevirtualize-at-ltrans"
                 nolto
+                delflag "-fdevirtualize-at-ltrans"
             ;;
 
             # Custom configuration + clang.
             firefox)
                 nolto
+                # We use the `lld` linker.
+                delflag "-fuse-ld=gold"
                 # Unsupported flags.
                 delflag "-fipa-pta"
                 delflag "-fdevirtualize-at-ltrans"
@@ -90,16 +91,23 @@ case "$TYPE" in
                 delflag "-floop-nest-optimize"
             ;;
 
-            musl)
-                 nolto
-                 delflag "-fuse-ld=gold"
+            llvm)
+                addflag "-ffat-lto-objects"
+                # clang segfaults.
+                delflag "-fno-semantic-interposition"
             ;;
 
             # Broken.
-            git | nodejs | python2 | strace | webkit2gtk | xorg-server) nolto ;;
+            git | github-cli | nodejs | protobuf | python2 | ruby | rust | strace | \
+            webkit2gtk | xorg-server) nolto ;;
 
-            # Don't bother optimising this cruft.
-            glibc | rust) saneflags ;;
+            musl)
+                nolto
+                delflag "-fuse-ld=gold"
+            ;;
+
+            # Too much breakage.
+            glibc) saneflags ;;
 
             # Statically link a few packages against a sane C library
             busybox | e2fsprogs | gzip | htop  | less  | m4      | mdevd | make | \
