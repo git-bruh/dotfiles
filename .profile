@@ -23,6 +23,7 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
 
 export PS1="-> "
 
+export ASAN_OPTIONS="log_path=./ASAN"
 export CHROME_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland"
 export CONFIG_DIR=".config"
 export EDITOR=vi

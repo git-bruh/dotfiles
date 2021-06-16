@@ -10,7 +10,7 @@ DEFFLAGS="
 	--symlink usr/bin /sbin
 	--symlink usr/lib /lib
 	--symlink usr/lib /lib64
-	--ro-bind $HOME/.icons $HOME/.icons
+	--ro-bind-try $HOME/.icons $HOME/.icons
 	--ro-bind-try $HOME/.config/gtk-3.0 $HOME/.config/gtk-3.0
 	--dev /dev
 	--dev-bind /dev/snd /dev/snd
