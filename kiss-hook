@@ -10,48 +10,24 @@ flagsed() {
     export LDFLAGS
 }
 
-saneflags() {
-    log "$PKG" "Using sane build flags"
-
-    export CFLAGS="-O2 -pipe -march=native -mtune=native"
-    export CXXFLAGS="$CFLAGS"
-    unset LDFLAGS
-}
-
-nolto() {
-    log "$PKG" "LTO disabled"
-
-    flagsed "s/-flto=auto//"
-}
-
 addflag() {
     log "$PKG" "Flag added: $1"
 
     flagsed "s/$/ $1/"
 }
 
-delflag() {
-    log "$PKG" "Flag removed: $1"
-
-    flagsed "s/$1//"
-}
-
 musl() {
-    kiss list musl
+    kiss list musl > /dev/null 2>&1 || {
+        log "$PKG" "Static linking needs musl!"
+    }
 
     log "$PKG" "Using musl-gcc"
 
     addflag "-static"
+
     export CC=musl-gcc
 }
 
-clang_flags() {
-    # Unsupported flags.
-    delflag "-fipa-pta"
-    delflag "-fdevirtualize-at-ltrans"
-    delflag "-fgraphite-identity"
-    delflag "-floop-nest-optimize"
-}
 
 case "$TYPE" in
     pre-build)
@@ -61,68 +37,12 @@ case "$TYPE" in
         export _LDFLAGS="$LDFLAGS"
 
         case "$PKG" in
-            alsa-lib | efivar)
-                addflag "-flto-partition=none" ;;
-
-            curl | libressl | libtermkey | lua | lzo | ncurses | zlib | zstd)
-                addflag "-ffat-lto-objects" ;;
-
-            # These packages have custom configuration to enable LTO.
-            ffmpeg | python) nolto ;;
-
-            gcc)
-                nolto
-                delflag "-fipa-pta"
-            ;;
-
-            # Can't build the kernel:
-            # assertion fail elflink.c:9236
-            binutils) delflag "-fipa-pta" ;;
-
-            # Custom configuration + clang.
-            chromium)
-                nolto
-                clang_flags
-                # We use the `lld` linker.
-                delflag "-fuse-ld=gold"
-            ;;
-
-            # Custom configuration + clang.
-            firefox)
-                nolto
-                clang_flags
-                # We use the `lld` linker.
-                delflag "-fuse-ld=gold"
-            ;;
-
-            llvm)
-                addflag "-ffat-lto-objects"
-                # clang segfaults.
-                delflag "-fno-semantic-interposition"
-            ;;
-
-            # Broken.
-            git | github-cli | nodejs | python2 | ruby | rust | strace | \
-            webkit2gtk | xorg-server) nolto ;;
-
-            musl)
-                nolto
-                delflag "-fuse-ld=gold"
-            ;;
-
-            # Too much breakage.
-            glibc) saneflags ;;
-
             # Statically link a few packages against a sane C library
             busybox | e2fsprogs | gnugrep | gzip  | m4    | mdevd   | make | mawk | \
-            mksh    | nawk-git  | oksh    | runit | sbase | skalibs | ssu  | ubase)
+            mksh    | nawk-git  | oksh    | runit | sbase | skalibs | ssu  | ubase | \
+            zstd)
                 musl
             ;;
-
-            *)
-                if grep rust "$repo_dir/depends" > /dev/null 2>&1; then
-                    addflag "-ffat-lto-objects"
-                fi
         esac
 
         IFS=. read -r _start _ < /proc/uptime

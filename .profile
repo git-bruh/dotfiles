@@ -1,22 +1,20 @@
 #!/bin/sh
 
-export CFLAGS="-O3 -pipe -march=native -mtune=native -fno-math-errno -fdevirtualize-at-ltrans -fno-semantic-interposition -fipa-pta -flto=auto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize -fuse-ld=gold"
+export CFLAGS="-O3 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"
 export CXXFLAGS="$CFLAGS"
-export LDFLAGS="-Wl,-O1 -Wl,--as-needed $CFLAGS"
-export MAKEFLAGS="-j12"
+export MAKEFLAGS="-j$(nproc)"
 
 export CMAKE_GENERATOR=Ninja
 
 export KISS_PATH=
 export KISS_TMPDIR=/tmp
-export KISS_COMPRESS=xz
+export KISS_COMPRESS=zst
 export KISS_HOOK="$HOME/kiss/kiss-hook"
-KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/overrides"
-KISS_PATH="$KISS_PATH:$HOME/kiss/kissLTO/repo"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/extra"
-KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/xorg"
+KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/nvidia"
+KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/kiss/community/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-repo/repo"
@@ -28,6 +26,7 @@ export CHROME_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland
 export CONFIG_DIR=".config"
 export EDITOR=vi
 export GOPATH="$HOME/.cache/go"
+export GTK_THEME=dracula-gtk-theme
 export LANG=en_US.UTF8
 export MOZ_ENABLE_WAYLAND=1
 export XDG_RUNTIME_DIR=/tmp

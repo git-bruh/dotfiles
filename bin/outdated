@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+for pkg in ./*; do
+    if [ -f "$pkg/version" ] && [ ! -h "$pkg/version" ]; then
+        current_ver="$(awk '{print $1}' "$pkg/version")"
+        url="https://repology.org/badge/latest-versions/${pkg}.svg"
+        resp=$(curl -Ss "$url") && {
+            remote_ver=${resp%</text>*}
+            remote_ver=${remote_ver##*>}
+            [ "$current_ver" = "$remote_ver" ] || {
+                printf "%s:\n\tCurrent: %s\n\tRemote: %s\n\n" \
+                    "$pkg" "$current_ver" "$remote_ver"
+            }
+        }
+    fi &
+done
+
+wait

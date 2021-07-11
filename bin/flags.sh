@@ -15,18 +15,20 @@ DEFFLAGS="
 	--dev /dev
 	--dev-bind /dev/snd /dev/snd
 	--dev-bind /dev/dri /dev/dri
-	--dev-bind /dev/nvidia-modeset /dev/nvidia-modeset
-	--dev-bind /dev/nvidia0 /dev/nvidia0
-	--dev-bind /dev/nvidiactl /dev/nvidiactl
+	--dev-bind-try /dev/nvidia-modeset /dev/nvidia-modeset
+	--dev-bind-try /dev/nvidia0 /dev/nvidia0
+	--dev-bind-try /dev/nvidiactl /dev/nvidiactl
 	--proc /proc
 	--ro-bind /sys/dev/char /sys/dev/char
 	--ro-bind /sys/devices/pci0000:00 /sys/devices/pci0000:00
 	--tmpfs /tmp
-	--ro-bind /tmp/wayland-1 /tmp/wayland-1
+	--bind /tmp/wayland-1 /tmp/wayland-1
+	--bind-try /tmp/.X11-unix /tmp/.X11-unix
 	--unshare-all
 	--share-net
 	--hostname RESTRICTED
 	--setenv PATH /usr/bin
+	--setenv DISPLAY ${DISPLAY:-:0}
 	--die-with-parent
 	--new-session
 "
