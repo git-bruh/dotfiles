@@ -1,74 +1,37 @@
 #!/bin/sh -e
 
-flagsed() {
-    CFLAGS="$(printf %s "$CFLAGS" | sed "$1")"
-    CXXFLAGS="$(printf %s "$CXXFLAGS" | sed "$1")"
-    LDFLAGS="$(printf %s "$LDFLAGS" | sed "$1")"
+[ "$KISS_COLOR" = 0 ] || ! [ -t 2 ] ||
+    c1='\033[1;33m' c2='\033[1;34m' c3='\033[m'
 
-    export CFLAGS
-    export CXXFLAGS
-    export LDFLAGS
+pid="$(grep "^PPid" "/proc/$$/status" | cut -f 2)"
+
+cac_dir=${XDG_CACHE_HOME:-"${HOME%"${HOME##*[!/]}"}/.cache"}
+cac_dir=${cac_dir%"${cac_dir##*[!/]}"}/kiss
+
+proc=${KISS_TMPDIR:="$cac_dir/proc"}
+proc=${proc%"${proc##*[!/]}"}/$pid
+
+log() {
+    printf '%b%s %b%s%b %s\n' \
+        "$c1" "${3:-->}" "${c3}${2:+$c2}" "$1" "$c3" "$2" >&2
 }
 
-addflag() {
-    log "$PKG" "Flag added: $1"
-
-    flagsed "s/$/ $1/"
-}
-
-musl() {
-    kiss list musl > /dev/null 2>&1 || {
-        log "$PKG" "Static linking needs musl!"
-    }
-
-    log "$PKG" "Using musl-gcc"
-
-    addflag "-static"
-
-    export CC=musl-gcc
-}
-
-
-case "$TYPE" in
+case "$1" in
     pre-build)
-        export _CC="${CC:-cc}"
-        export _CFLAGS="$CFLAGS"
-        export _CXXFLAGS="$CXXFLAGS"
-        export _LDFLAGS="$LDFLAGS"
-
-        case "$PKG" in
-            # Statically link a few packages against a sane C library
-            busybox | e2fsprogs | gnugrep | gzip  | m4    | mdevd   | make | mawk | \
-            mksh    | nawk-git  | oksh    | runit | sbase | skalibs | ssu  | ubase | \
-            zstd)
-                musl
-            ;;
-        esac
-
         IFS=. read -r _start _ < /proc/uptime
+        printf "%d" "$_start" > "$proc/uptime"
     ;;
 
     post-build)
-        case "$PKG" in
-            mksh)
-                ln -s mksh "$DEST/usr/bin/sh"
-            ;;
-        esac
-
-        : "${DEST:?DEST is unset}"
-
-        export CC="$_CC"
-        export CFLAGS="$_CFLAGS"
-        export CXXFLAGS="$_CFLAGS"
-        export LDFLAGS="$_LDFLAGS"
-
         rm -rf  "$3/usr/share/gettext" \
                 "$3/usr/share/polkit-1" \
                 "$3/usr/share/info" \
                 "$3/usr/share/locale" \
+                "$3/usr/lib/charset.alias" \
                 "$3/usr/lib/gconv"
 
         IFS=. read -r _end _ < /proc/uptime
+        _start="$(cat "$proc/uptime")"
 
         (
             _s=$((_end - _start))
@@ -78,8 +41,7 @@ case "$TYPE" in
             [ "$_h" = 0 ] || _u="${_u}${_h}h "
             [ "$_m" = 0 ] || _u="${_u}${_m}m "
 
-            log "$PKG" "Build finished in ${_u:-${_s}s}"
+            log "$2" "Build finished in ${_u:-${_s}s}"
         )
     ;;
-
 esac

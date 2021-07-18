@@ -2,10 +2,10 @@
 
 . "$(dirname "$0")/flags.sh"
 
-mkdir -p "$HOME/.mozilla" "$HOME/Downloads/firefox" 
+mkdir -p "$HOME/.config/mozilla" "$HOME/Downloads/firefox"
 
 bwrap \
 	$DEFFLAGS \
-	--bind "$HOME/.mozilla" "$HOME/.mozilla" \
+	--bind "$HOME/.config/mozilla" "$HOME/.mozilla" \
 	--bind "$HOME/Downloads/firefox" "$HOME/Downloads" \
 	/usr/bin/firefox "$@"

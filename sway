@@ -25,7 +25,7 @@ set $menu exec bemenu-run --tb "#282A36" --tf "#BFBFBF" --fb "#282A36" --ff "#F8
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /mnt/git/git/dotfiles/wallpaper.png fill
+output * bg /home/testuser/git/git/dotfiles/wallpaper.png fill
 #
 # Example configuration:
 #
