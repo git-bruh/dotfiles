@@ -20,7 +20,7 @@ KISS_PATH="$KISS_PATH:$HOME/kiss/community/community"
 KISS_PATH="$KISS_PATH:$HOME/kiss/gcommunity/community"
 KISS_PATH="$KISS_PATH:$HOME/git/git/kiss-repo/repo"
 
-export PS1="-> "
+export PS1="λ "
 
 export ASAN_OPTIONS="log_path=./ASAN"
 export CHROME_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland"

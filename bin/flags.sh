@@ -1,7 +1,6 @@
 #!/bin/sh
 
 DEFFLAGS="
-	--ro-bind /etc/asound.conf /etc/asound.conf
 	--ro-bind /etc/fonts /etc/fonts
 	--ro-bind /etc/resolv.conf /etc/resolv.conf
 	--ro-bind /etc/ssl /etc/ssl
@@ -10,6 +9,8 @@ DEFFLAGS="
 	--symlink usr/bin /sbin
 	--symlink usr/lib /lib
 	--symlink usr/lib /lib64
+	--ro-bind-try /etc/asound.conf /etc/asound.conf
+	--ro-bind-try $HOME/.asoundrc $HOME/.asoundrc
 	--ro-bind-try $HOME/.icons $HOME/.icons
 	--ro-bind-try $HOME/.config/gtk-3.0 $HOME/.config/gtk-3.0
 	--dev /dev
