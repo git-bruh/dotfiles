@@ -23,7 +23,7 @@ DEFFLAGS="
 	--ro-bind /sys/dev/char /sys/dev/char
 	--ro-bind /sys/devices/pci0000:00 /sys/devices/pci0000:00
 	--tmpfs /tmp
-	--bind /tmp/wayland-1 /tmp/wayland-1
+	--bind $XDG_RUNTIME_DIR $XDG_RUNTIME_DIR
 	--bind-try /tmp/.X11-unix /tmp/.X11-unix
 	--unshare-all
 	--share-net

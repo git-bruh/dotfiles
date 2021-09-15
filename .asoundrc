@@ -1,6 +1,15 @@
 pcm.!default {
-  type plug
-  slave.pcm "dmixer"
+  type asym
+
+  playback.pcm {
+    type plug
+    slave.pcm "dmixer"
+  }
+
+  capture.pcm {
+    type plug
+    slave.pcm "hw:2,0"
+  }
 }
 
 pcm.dsp0 {
