@@ -1,6 +1,22 @@
 #!/bin/sh
 
-DEFFLAGS="
+unset DBUS_SESSION_BUS_ADDRESS
+unset DBUS_SESSION_BUS_PID
+
+DBUS_WRAPPER_REAL="$(dirname "$0")/dbus-wrap"
+DBUS_WRAPPER=/dbus-wrap
+
+export DBUSFLAGS="
+	--dir /run/dbus
+	--ro-bind /etc/dbus-1 /etc/dbus-1
+	--setenv XDG_CURRENT_DESKTOP sway
+	--setenv XDG_SESSION_TYPE wayland
+	--ro-bind $DBUS_WRAPPER_REAL $DBUS_WRAPPER
+"
+
+unset DBUS_WRAPPER_REAL
+
+export DEFFLAGS="
 	--ro-bind /etc/fonts /etc/fonts
 	--ro-bind /etc/resolv.conf /etc/resolv.conf
 	--ro-bind /etc/ssl /etc/ssl
@@ -23,13 +39,14 @@ DEFFLAGS="
 	--ro-bind /sys/dev/char /sys/dev/char
 	--ro-bind /sys/devices/pci0000:00 /sys/devices/pci0000:00
 	--tmpfs /tmp
-	--bind $XDG_RUNTIME_DIR $XDG_RUNTIME_DIR
+	--bind-try $XDG_RUNTIME_DIR/wayland-1 $HOME/wayland-1
 	--bind-try /tmp/.X11-unix /tmp/.X11-unix
 	--unshare-all
 	--share-net
 	--hostname RESTRICTED
 	--setenv PATH /usr/bin
 	--setenv DISPLAY ${DISPLAY:-:0}
+	--setenv XDG_RUNTIME_DIR $HOME
 	--die-with-parent
 	--new-session
 "
