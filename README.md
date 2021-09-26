@@ -1,5 +1,3 @@
 # dotfiles
 
-![Screenshot](screenshot.png)
-
-NOTE: `font-awesome` is used in `slstatus`
+Most of this repo is just a backup. The `bin/` directory contains some [bubblewrap](https://github.com/containers/bubblewrap) sandboxing scripts that might be useful.
