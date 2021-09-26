@@ -23,15 +23,14 @@ KISS_PATH="$KISS_PATH:$HOME/git/git/kiss-repo/repo"
 export PS1="λ "
 
 export ASAN_OPTIONS="log_path=./ASAN"
-export CHROME_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland"
-export DART_VM_OPTIONS="--root-certs-file=/etc/ssl/cert.pem"
-export CONFIG_DIR=".config"
-export EDITOR=vi
 export GOPATH="$HOME/.cache/go"
+export DART_VM_OPTIONS=--root-certs-file=/etc/ssl/cert.pem
+export CONFIG_DIR=.config
+export EDITOR=vi
 export GTK_THEME=dracula-gtk-theme
 export LANG=en_US.UTF8
 export MOZ_ENABLE_WAYLAND=1
-export XDG_RUNTIME_DIR="$HOME/.cache/tmp"
+export XDG_RUNTIME_DIR=/tmp
 
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
 PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"

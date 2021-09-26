@@ -6,7 +6,6 @@ mkdir -p "$HOME/.config/chromium" "$HOME/Downloads/chromium"
 
 bwrap \
 	$DEFFLAGS \
-	$DBUSFLAGS \
 	--bind "$HOME/.config/chromium" "$HOME/.config/chromium" \
 	--bind "$HOME/Downloads/chromium" "$HOME/Downloads" \
-	"$DBUS_WRAPPER" /usr/bin/chromium "$@"
+	/usr/bin/chromium "$@"

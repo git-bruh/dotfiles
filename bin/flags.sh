@@ -8,7 +8,7 @@ DBUS_WRAPPER=/dbus-wrap
 
 export DBUSFLAGS="
 	--dir /run/dbus
-	--ro-bind /etc/dbus-1 /etc/dbus-1
+	--ro-bind-try /etc/dbus-1 /etc/dbus-1
 	--setenv XDG_CURRENT_DESKTOP sway
 	--setenv XDG_SESSION_TYPE wayland
 	--ro-bind $DBUS_WRAPPER_REAL $DBUS_WRAPPER
@@ -35,18 +35,18 @@ export DEFFLAGS="
 	--dev-bind-try /dev/nvidia-modeset /dev/nvidia-modeset
 	--dev-bind-try /dev/nvidia0 /dev/nvidia0
 	--dev-bind-try /dev/nvidiactl /dev/nvidiactl
+	--dev-bind-try /dev/video0 /dev/video0
 	--proc /proc
 	--ro-bind /sys/dev/char /sys/dev/char
 	--ro-bind /sys/devices/pci0000:00 /sys/devices/pci0000:00
 	--tmpfs /tmp
-	--bind-try $XDG_RUNTIME_DIR/wayland-1 $HOME/wayland-1
+	--bind-try $XDG_RUNTIME_DIR $XDG_RUNTIME_DIR
 	--bind-try /tmp/.X11-unix /tmp/.X11-unix
 	--unshare-all
 	--share-net
 	--hostname RESTRICTED
 	--setenv PATH /usr/bin
 	--setenv DISPLAY ${DISPLAY:-:0}
-	--setenv XDG_RUNTIME_DIR $HOME
 	--die-with-parent
 	--new-session
 "
