@@ -1054,6 +1054,7 @@ CONFIG_BLK_DEV_LOOP_MIN_COUNT=8
 # CONFIG_BLK_DEV_NVME is not set
 # CONFIG_NVME_FC is not set
 # CONFIG_NVME_TCP is not set
+# CONFIG_NVME_TARGET is not set
 # end of NVME Support
 
 #
@@ -1771,7 +1772,330 @@ CONFIG_BCMA_POSSIBLE=y
 # CONFIG_REGULATOR is not set
 # CONFIG_RC_CORE is not set
 # CONFIG_MEDIA_CEC_SUPPORT is not set
-# CONFIG_MEDIA_SUPPORT is not set
+CONFIG_MEDIA_SUPPORT=y
+# CONFIG_MEDIA_SUPPORT_FILTER is not set
+CONFIG_MEDIA_SUBDRV_AUTOSELECT=y
+
+#
+# Media device types
+#
+CONFIG_MEDIA_CAMERA_SUPPORT=y
+CONFIG_MEDIA_ANALOG_TV_SUPPORT=y
+CONFIG_MEDIA_DIGITAL_TV_SUPPORT=y
+CONFIG_MEDIA_RADIO_SUPPORT=y
+CONFIG_MEDIA_SDR_SUPPORT=y
+CONFIG_MEDIA_PLATFORM_SUPPORT=y
+CONFIG_MEDIA_TEST_SUPPORT=y
+# end of Media device types
+
+#
+# Media core support
+#
+CONFIG_VIDEO_DEV=y
+CONFIG_MEDIA_CONTROLLER=y
+CONFIG_DVB_CORE=y
+# end of Media core support
+
+#
+# Video4Linux options
+#
+CONFIG_VIDEO_V4L2=y
+CONFIG_VIDEO_V4L2_I2C=y
+CONFIG_VIDEO_V4L2_SUBDEV_API=y
+# CONFIG_VIDEO_ADV_DEBUG is not set
+# CONFIG_VIDEO_FIXED_MINOR_RANGES is not set
+# end of Video4Linux options
+
+#
+# Media controller options
+#
+# CONFIG_MEDIA_CONTROLLER_DVB is not set
+# end of Media controller options
+
+#
+# Digital TV options
+#
+# CONFIG_DVB_MMAP is not set
+# CONFIG_DVB_NET is not set
+CONFIG_DVB_MAX_ADAPTERS=16
+# CONFIG_DVB_DYNAMIC_MINORS is not set
+# CONFIG_DVB_DEMUX_SECTION_LOSS_LOG is not set
+# CONFIG_DVB_ULE_DEBUG is not set
+# end of Digital TV options
+
+#
+# Media drivers
+#
+CONFIG_MEDIA_USB_SUPPORT=y
+
+#
+# Webcam devices
+#
+CONFIG_USB_VIDEO_CLASS=y
+CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV=y
+CONFIG_USB_GSPCA=y
+# CONFIG_USB_M5602 is not set
+# CONFIG_USB_STV06XX is not set
+# CONFIG_USB_GL860 is not set
+# CONFIG_USB_GSPCA_BENQ is not set
+# CONFIG_USB_GSPCA_CONEX is not set
+# CONFIG_USB_GSPCA_CPIA1 is not set
+# CONFIG_USB_GSPCA_DTCS033 is not set
+# CONFIG_USB_GSPCA_ETOMS is not set
+# CONFIG_USB_GSPCA_FINEPIX is not set
+# CONFIG_USB_GSPCA_JEILINJ is not set
+# CONFIG_USB_GSPCA_JL2005BCD is not set
+# CONFIG_USB_GSPCA_KINECT is not set
+# CONFIG_USB_GSPCA_KONICA is not set
+# CONFIG_USB_GSPCA_MARS is not set
+# CONFIG_USB_GSPCA_MR97310A is not set
+# CONFIG_USB_GSPCA_NW80X is not set
+# CONFIG_USB_GSPCA_OV519 is not set
+# CONFIG_USB_GSPCA_OV534 is not set
+# CONFIG_USB_GSPCA_OV534_9 is not set
+# CONFIG_USB_GSPCA_PAC207 is not set
+# CONFIG_USB_GSPCA_PAC7302 is not set
+# CONFIG_USB_GSPCA_PAC7311 is not set
+# CONFIG_USB_GSPCA_SE401 is not set
+# CONFIG_USB_GSPCA_SN9C2028 is not set
+# CONFIG_USB_GSPCA_SN9C20X is not set
+# CONFIG_USB_GSPCA_SONIXB is not set
+# CONFIG_USB_GSPCA_SONIXJ is not set
+# CONFIG_USB_GSPCA_SPCA500 is not set
+# CONFIG_USB_GSPCA_SPCA501 is not set
+# CONFIG_USB_GSPCA_SPCA505 is not set
+# CONFIG_USB_GSPCA_SPCA506 is not set
+# CONFIG_USB_GSPCA_SPCA508 is not set
+# CONFIG_USB_GSPCA_SPCA561 is not set
+# CONFIG_USB_GSPCA_SPCA1528 is not set
+# CONFIG_USB_GSPCA_SQ905 is not set
+# CONFIG_USB_GSPCA_SQ905C is not set
+# CONFIG_USB_GSPCA_SQ930X is not set
+# CONFIG_USB_GSPCA_STK014 is not set
+# CONFIG_USB_GSPCA_STK1135 is not set
+# CONFIG_USB_GSPCA_STV0680 is not set
+# CONFIG_USB_GSPCA_SUNPLUS is not set
+# CONFIG_USB_GSPCA_T613 is not set
+# CONFIG_USB_GSPCA_TOPRO is not set
+# CONFIG_USB_GSPCA_TOUPTEK is not set
+# CONFIG_USB_GSPCA_TV8532 is not set
+# CONFIG_USB_GSPCA_VC032X is not set
+# CONFIG_USB_GSPCA_VICAM is not set
+# CONFIG_USB_GSPCA_XIRLINK_CIT is not set
+# CONFIG_USB_GSPCA_ZC3XX is not set
+# CONFIG_USB_PWC is not set
+# CONFIG_VIDEO_CPIA2 is not set
+# CONFIG_USB_ZR364XX is not set
+# CONFIG_USB_STKWEBCAM is not set
+# CONFIG_USB_S2255 is not set
+# CONFIG_VIDEO_USBTV is not set
+
+#
+# Analog TV USB devices
+#
+# CONFIG_VIDEO_PVRUSB2 is not set
+# CONFIG_VIDEO_HDPVR is not set
+# CONFIG_VIDEO_STK1160_COMMON is not set
+# CONFIG_VIDEO_GO7007 is not set
+
+#
+# Analog/digital TV USB devices
+#
+# CONFIG_VIDEO_AU0828 is not set
+# CONFIG_VIDEO_CX231XX is not set
+
+#
+# Digital TV USB devices
+#
+# CONFIG_DVB_USB_V2 is not set
+# CONFIG_DVB_TTUSB_BUDGET is not set
+# CONFIG_DVB_TTUSB_DEC is not set
+# CONFIG_SMS_USB_DRV is not set
+# CONFIG_DVB_B2C2_FLEXCOP_USB is not set
+# CONFIG_DVB_AS102 is not set
+
+#
+# Webcam, TV (analog/digital) USB devices
+#
+# CONFIG_VIDEO_EM28XX is not set
+
+#
+# Software defined radio USB devices
+#
+# CONFIG_USB_AIRSPY is not set
+# CONFIG_USB_HACKRF is not set
+# CONFIG_MEDIA_PCI_SUPPORT is not set
+# CONFIG_RADIO_ADAPTERS is not set
+CONFIG_VIDEOBUF2_CORE=y
+CONFIG_VIDEOBUF2_V4L2=y
+CONFIG_VIDEOBUF2_MEMOPS=y
+CONFIG_VIDEOBUF2_VMALLOC=y
+# CONFIG_V4L_PLATFORM_DRIVERS is not set
+# CONFIG_V4L_MEM2MEM_DRIVERS is not set
+# CONFIG_DVB_PLATFORM_DRIVERS is not set
+# CONFIG_SDR_PLATFORM_DRIVERS is not set
+# CONFIG_V4L_TEST_DRIVERS is not set
+# CONFIG_DVB_TEST_DRIVERS is not set
+# end of Media drivers
+
+CONFIG_MEDIA_HIDE_ANCILLARY_SUBDRV=y
+
+#
+# Media ancillary drivers
+#
+CONFIG_MEDIA_ATTACH=y
+
+#
+# audio, video and radio I2C drivers auto-selected by 'Autoselect ancillary drivers'
+#
+
+#
+# Video and audio decoders
+#
+
+#
+# Camera sensor devices
+#
+# CONFIG_VIDEO_HI556 is not set
+# CONFIG_VIDEO_IMX208 is not set
+# CONFIG_VIDEO_IMX219 is not set
+# CONFIG_VIDEO_IMX258 is not set
+# CONFIG_VIDEO_IMX274 is not set
+# CONFIG_VIDEO_IMX290 is not set
+# CONFIG_VIDEO_IMX319 is not set
+# CONFIG_VIDEO_IMX355 is not set
+# CONFIG_VIDEO_OV02A10 is not set
+# CONFIG_VIDEO_OV2640 is not set
+# CONFIG_VIDEO_OV2680 is not set
+# CONFIG_VIDEO_OV2685 is not set
+# CONFIG_VIDEO_OV2740 is not set
+# CONFIG_VIDEO_OV5647 is not set
+# CONFIG_VIDEO_OV6650 is not set
+# CONFIG_VIDEO_OV5670 is not set
+# CONFIG_VIDEO_OV5675 is not set
+# CONFIG_VIDEO_OV5695 is not set
+# CONFIG_VIDEO_OV7251 is not set
+# CONFIG_VIDEO_OV772X is not set
+# CONFIG_VIDEO_OV7640 is not set
+# CONFIG_VIDEO_OV7670 is not set
+# CONFIG_VIDEO_OV7740 is not set
+# CONFIG_VIDEO_OV8856 is not set
+# CONFIG_VIDEO_OV9640 is not set
+# CONFIG_VIDEO_OV9650 is not set
+# CONFIG_VIDEO_OV9734 is not set
+# CONFIG_VIDEO_OV13858 is not set
+# CONFIG_VIDEO_VS6624 is not set
+# CONFIG_VIDEO_MT9M001 is not set
+# CONFIG_VIDEO_MT9M032 is not set
+# CONFIG_VIDEO_MT9M111 is not set
+# CONFIG_VIDEO_MT9P031 is not set
+# CONFIG_VIDEO_MT9T001 is not set
+# CONFIG_VIDEO_MT9T112 is not set
+# CONFIG_VIDEO_MT9V011 is not set
+# CONFIG_VIDEO_MT9V032 is not set
+# CONFIG_VIDEO_MT9V111 is not set
+# CONFIG_VIDEO_SR030PC30 is not set
+# CONFIG_VIDEO_NOON010PC30 is not set
+# CONFIG_VIDEO_M5MOLS is not set
+# CONFIG_VIDEO_RDACM20 is not set
+# CONFIG_VIDEO_RDACM21 is not set
+# CONFIG_VIDEO_RJ54N1 is not set
+# CONFIG_VIDEO_S5K6AA is not set
+# CONFIG_VIDEO_S5K6A3 is not set
+# CONFIG_VIDEO_S5K4ECGX is not set
+# CONFIG_VIDEO_S5K5BAF is not set
+# CONFIG_VIDEO_CCS is not set
+# CONFIG_VIDEO_ET8EK8 is not set
+# end of Camera sensor devices
+
+#
+# Lens drivers
+#
+# CONFIG_VIDEO_AK7375 is not set
+# CONFIG_VIDEO_DW9714 is not set
+# CONFIG_VIDEO_DW9768 is not set
+# CONFIG_VIDEO_DW9807_VCM is not set
+# end of Lens drivers
+
+#
+# Flash devices
+#
+# CONFIG_VIDEO_ADP1653 is not set
+# CONFIG_VIDEO_LM3560 is not set
+# CONFIG_VIDEO_LM3646 is not set
+# end of Flash devices
+
+CONFIG_MEDIA_TUNER=y
+
+#
+# Tuner drivers auto-selected by 'Autoselect ancillary drivers'
+#
+CONFIG_MEDIA_TUNER_SIMPLE=y
+CONFIG_MEDIA_TUNER_TDA8290=y
+CONFIG_MEDIA_TUNER_TDA827X=y
+CONFIG_MEDIA_TUNER_TDA18271=y
+CONFIG_MEDIA_TUNER_TDA9887=y
+CONFIG_MEDIA_TUNER_TEA5761=y
+CONFIG_MEDIA_TUNER_TEA5767=y
+CONFIG_MEDIA_TUNER_MT20XX=y
+CONFIG_MEDIA_TUNER_XC2028=y
+CONFIG_MEDIA_TUNER_XC5000=y
+CONFIG_MEDIA_TUNER_XC4000=y
+CONFIG_MEDIA_TUNER_MC44S803=y
+
+#
+# DVB Frontend drivers auto-selected by 'Autoselect ancillary drivers'
+#
+
+#
+# Multistandard (satellite) frontends
+#
+
+#
+# Multistandard (cable + terrestrial) frontends
+#
+
+#
+# DVB-S (satellite) frontends
+#
+
+#
+# DVB-T (terrestrial) frontends
+#
+
+#
+# DVB-C (cable) frontends
+#
+
+#
+# ATSC (North American/Korean Terrestrial/Cable DTV) frontends
+#
+
+#
+# ISDB-T (terrestrial) frontends
+#
+
+#
+# ISDB-S (satellite) & ISDB-T (terrestrial) frontends
+#
+
+#
+# Digital terrestrial only tuners/PLL
+#
+
+#
+# SEC control devices for DVB-S
+#
+
+#
+# Common Interface (EN50221) controller drivers
+#
+
+#
+# Tools to develop new frontends
+#
+# CONFIG_DVB_DUMMY_FE is not set
+# end of Media ancillary drivers
 
 #
 # Graphics support
@@ -2053,6 +2377,7 @@ CONFIG_SND_INTEL_DSP_CONFIG=y
 CONFIG_SND_INTEL_SOUNDWIRE_ACPI=y
 CONFIG_SND_USB=y
 CONFIG_SND_USB_AUDIO=y
+CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER=y
 # CONFIG_SND_USB_UA101 is not set
 # CONFIG_SND_USB_USX2Y is not set
 # CONFIG_SND_USB_CAIAQ is not set
@@ -2558,7 +2883,56 @@ CONFIG_USB_SERIAL=y
 # CONFIG_USB_ISP1301 is not set
 # end of USB Physical Layer drivers
 
-# CONFIG_USB_GADGET is not set
+CONFIG_USB_GADGET=y
+# CONFIG_USB_GADGET_DEBUG_FILES is not set
+CONFIG_USB_GADGET_VBUS_DRAW=2
+CONFIG_USB_GADGET_STORAGE_NUM_BUFFERS=2
+
+#
+# USB Peripheral Controller
+#
+# CONFIG_USB_FOTG210_UDC is not set
+# CONFIG_USB_GR_UDC is not set
+# CONFIG_USB_R8A66597 is not set
+# CONFIG_USB_PXA27X is not set
+# CONFIG_USB_MV_UDC is not set
+# CONFIG_USB_MV_U3D is not set
+# CONFIG_USB_M66592 is not set
+# CONFIG_USB_BDC_UDC is not set
+# CONFIG_USB_AMD5536UDC is not set
+# CONFIG_USB_NET2272 is not set
+# CONFIG_USB_NET2280 is not set
+# CONFIG_USB_GOKU is not set
+# CONFIG_USB_EG20T is not set
+# CONFIG_USB_DUMMY_HCD is not set
+# end of USB Peripheral Controller
+
+CONFIG_USB_LIBCOMPOSITE=y
+CONFIG_USB_F_UVC=y
+# CONFIG_USB_CONFIGFS is not set
+
+#
+# USB Gadget precomposed configurations
+#
+# CONFIG_USB_ZERO is not set
+# CONFIG_USB_AUDIO is not set
+# CONFIG_USB_ETH is not set
+# CONFIG_USB_G_NCM is not set
+# CONFIG_USB_GADGETFS is not set
+# CONFIG_USB_FUNCTIONFS is not set
+# CONFIG_USB_MASS_STORAGE is not set
+# CONFIG_USB_G_SERIAL is not set
+# CONFIG_USB_MIDI_GADGET is not set
+# CONFIG_USB_G_PRINTER is not set
+# CONFIG_USB_CDC_COMPOSITE is not set
+# CONFIG_USB_G_ACM_MS is not set
+# CONFIG_USB_G_MULTI is not set
+# CONFIG_USB_G_HID is not set
+# CONFIG_USB_G_DBGP is not set
+CONFIG_USB_G_WEBCAM=y
+# CONFIG_USB_RAW_GADGET is not set
+# end of USB Gadget precomposed configurations
+
 # CONFIG_TYPEC is not set
 # CONFIG_USB_ROLE_SWITCH is not set
 # CONFIG_MMC is not set
@@ -2837,6 +3211,7 @@ CONFIG_PCC=y
 # CONFIG_SLIMBUS is not set
 # CONFIG_INTERCONNECT is not set
 # CONFIG_COUNTER is not set
+# CONFIG_MOST is not set
 # end of Device Drivers
 
 #
@@ -2859,6 +3234,7 @@ CONFIG_FS_MBCACHE=y
 # CONFIG_JFS_FS is not set
 # CONFIG_XFS_FS is not set
 # CONFIG_GFS2_FS is not set
+# CONFIG_OCFS2_FS is not set
 CONFIG_BTRFS_FS=y
 # CONFIG_BTRFS_FS_POSIX_ACL is not set
 # CONFIG_BTRFS_FS_CHECK_INTEGRITY is not set
@@ -2931,7 +3307,7 @@ CONFIG_TMPFS=y
 # CONFIG_HUGETLBFS is not set
 CONFIG_MEMFD_CREATE=y
 CONFIG_ARCH_HAS_GIGANTIC_PAGE=y
-# CONFIG_CONFIGFS_FS is not set
+CONFIG_CONFIGFS_FS=y
 CONFIG_EFIVAR_FS=y
 # end of Pseudo filesystems
 
@@ -3024,6 +3400,7 @@ CONFIG_NLS_ISO8859_1=y
 # CONFIG_NLS_MAC_ROMANIAN is not set
 # CONFIG_NLS_MAC_TURKISH is not set
 # CONFIG_NLS_UTF8 is not set
+# CONFIG_DLM is not set
 CONFIG_UNICODE=y
 # CONFIG_UNICODE_NORMALIZATION_SELFTEST is not set
 CONFIG_IO_WQ=y
