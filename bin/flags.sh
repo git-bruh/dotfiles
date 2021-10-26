@@ -17,6 +17,7 @@ export DBUSFLAGS="
 unset DBUS_WRAPPER_REAL
 
 export DEFFLAGS="
+	--ro-bind /etc/localtime /etc/localtime
 	--ro-bind /etc/fonts /etc/fonts
 	--ro-bind /etc/resolv.conf /etc/resolv.conf
 	--ro-bind /etc/ssl /etc/ssl
