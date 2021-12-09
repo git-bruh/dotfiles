@@ -35,5 +35,5 @@ PATH="$HOME/git/git/dotfiles/bin:$PATH"
 PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"
 
 if [ "$(tty)" = /dev/tty1 ]; then
-   	exec sway --my-next-gpu-wont-be-nvidia;
+   	exec sway --unsupported-gpu
 fi
