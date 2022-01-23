@@ -21,6 +21,7 @@ KISS_PATH="$KISS_PATH:$HOME/git/git/kiss-repo/repo"
 export PS1="λ "
 
 export ASAN_OPTIONS="log_path=./ASAN"
+export TSAN_OPTIONS="log_path=./TSAN"
 export GOPATH="$HOME/.cache/go"
 export DART_VM_OPTIONS=--root-certs-file=/etc/ssl/cert.pem
 export CONFIG_DIR=.config
@@ -30,6 +31,7 @@ export LANG=en_US.UTF8
 export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
 export XDG_RUNTIME_DIR=/tmp
+export MOZ_WEBRENDER=1
 
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
 PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"
