@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+. "$HOME/git/py/bin/activate"
+
+exec "$@"
