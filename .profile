@@ -37,5 +37,5 @@ PATH="$HOME/git/git/dotfiles/bin:$PATH"
 PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"
 
 if [ "$(tty)" = /dev/tty1 ]; then
-   	exec sway --unsupported-gpu
+   	exec sway --unsupported-gpu --debug > /tmp/sway.log 2>&1
 fi
