@@ -36,6 +36,7 @@ for pkg in ./*; do
                 (
                     cd "$pkg"
 
+                    sed -i "s|$current_ver|$new_ver|g" sources
                     echo "$new_ver 1" > version
                     kiss checksum
                 )
