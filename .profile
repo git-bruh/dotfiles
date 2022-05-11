@@ -9,6 +9,7 @@ export CMAKE_GENERATOR=Ninja
 export KISS_PATH=
 export KISS_TMPDIR=/tmp
 export KISS_COMPRESS=xz
+export KISS_GET=axel
 export KISS_SU=ssu
 KISS_PATH="$KISS_PATH:$HOME/git/git/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
