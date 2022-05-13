@@ -34,6 +34,7 @@ export SDL_VIDEODRIVER=wayland
 export XDG_RUNTIME_DIR=/tmp
 export MOZ_WEBRENDER=1
 
+PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
 PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"
 
