@@ -33,6 +33,7 @@ export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
 export XDG_RUNTIME_DIR=/tmp
 export MOZ_WEBRENDER=1
+export WLR_NO_HARDWARE_CURSORS=1
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
