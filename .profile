@@ -27,13 +27,13 @@ export GOPATH="$HOME/.cache/go"
 export DART_VM_OPTIONS=--root-certs-file=/etc/ssl/cert.pem
 export CONFIG_DIR=.config
 export EDITOR=vi
-export GTK_THEME=dracula-gtk-theme
 export LANG=en_US.UTF8
 export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
 export XDG_RUNTIME_DIR=/tmp
 export MOZ_WEBRENDER=1
 export WLR_NO_HARDWARE_CURSORS=1
+export GTK_THEME=Qogir-dark
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/git/git/dotfiles/bin:$PATH"

@@ -26,6 +26,9 @@ export DEFFLAGS="
 	--symlink usr/bin /sbin
 	--symlink usr/lib /lib
 	--symlink usr/lib /lib64
+	--ro-bind-try /usr/share/fonts /usr/share/fonts
+	--ro-bind-try /usr/share/icons /usr/share/icons
+	--ro-bind-try /usr/share/themes /usr/share/themes
 	--ro-bind-try /etc/asound.conf /etc/asound.conf
 	--ro-bind-try $HOME/.asoundrc $HOME/.asoundrc
 	--ro-bind-try $HOME/.icons $HOME/.icons
