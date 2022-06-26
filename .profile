@@ -30,7 +30,7 @@ export EDITOR=vi
 export LANG=en_US.UTF8
 export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
-export XDG_RUNTIME_DIR=/tmp
+export XDG_RUNTIME_DIR="/tmp/$(whoami)"
 export MOZ_WEBRENDER=1
 export WLR_NO_HARDWARE_CURSORS=1
 export GTK_THEME=Qogir-dark
@@ -39,6 +39,8 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
 PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"
 
+mkdir -p "$XDG_RUNTIME_DIR"
+
 if [ "$(tty)" = /dev/tty1 ]; then
-   	exec sway --unsupported-gpu --debug > /tmp/sway.log 2>&1
+   	exec sway --unsupported-gpu
 fi
