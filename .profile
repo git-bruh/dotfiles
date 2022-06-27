@@ -37,7 +37,14 @@ export GTK_THEME=Qogir-dark
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/git/git/dotfiles/bin:$PATH"
-PATH="$PATH:$HOME/git/android/Sdk/platform-tools:$HOME/git/android/flutter/bin"
+
+export ANDROID_HOME="$HOME/git/Android"
+export ANDROID_USER_HOME="$ANDROID_HOME/.android"
+export ANDROID_EMULATOR_HOME="$ANDROID_USER_HOME"
+export JAVA_HOME="$ANDROID_HOME/java"
+
+PATH="$PATH:$ANDROID_HOME/cmdline-tools/bin"
+PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 mkdir -p "$XDG_RUNTIME_DIR"
 
