@@ -24,18 +24,15 @@ export KISS_TMPDIR=/tmp/kiss
 export KISS_GET=axel
 export KISS_SU=ssu
 
-KISS_PATH="$KISS_PATH:$HOME/git/git/kiss-repo/overrides"
-KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/core"
-KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-xorg/extra"
-KISS_PATH="$KISS_PATH:$HOME/kiss/kiss-xorg/xorg"
-KISS_PATH="$KISS_PATH:$HOME/kiss/grepo/extra"
-KISS_PATH="$KISS_PATH:$HOME/kiss/community/community"
-KISS_PATH="$KISS_PATH:$HOME/git/git/kiss-repo/repo"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/overrides"
+KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-xorg/extra"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-xorg/xorg"
+KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
+KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
 
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/git/git/dotfiles/bin:$PATH"
-
-export ANDROID_SDK_ROOT="$HOME/git/Android"
+export ANDROID_SDK_ROOT="$HOME/Development/Android"
 export ANDROID_USER_HOME="$ANDROID_SDK_ROOT/.android"
 export ANDROID_EMULATOR_HOME="$ANDROID_USER_HOME"
 export DART_VM_OPTIONS="--root-certs-file=/etc/ssl/cert.pem"
@@ -44,6 +41,8 @@ export JAVA_HOME="$ANDROID_SDK_ROOT/java"
 
 PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+
+PATH="$HOME/Development/Repos/dotfiles/bin:$PATH"
 
 mkdir -p "$XDG_RUNTIME_DIR"
 
