@@ -10,7 +10,7 @@ bwrap \
 	--bind "${1:?}" / \
 	--bind /tmp /tmp \
 	--bind "$HOME/.cache/kiss/sources/" "$BUILD_HOME/.cache/kiss/sources" \
-	--bind "$HOME/kiss" "$BUILD_HOME/kiss" \
+	--bind "$HOME/KISS" "$BUILD_HOME/kiss" \
 	--ro-bind /etc/resolv.conf /etc/resolv.conf \
 	--dev /dev \
 	--proc /proc \

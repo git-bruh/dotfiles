@@ -1,5 +1,5 @@
 #!/bin/sh -e
 
-. "$HOME/git/py/bin/activate"
+. "$HOME/Development/py/bin/activate"
 
 exec "$@"
