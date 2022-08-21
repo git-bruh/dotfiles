@@ -26,11 +26,11 @@ export KISS_SU=ssu
 
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
-KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-xorg/extra"
-KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-xorg/xorg"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
-KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
+KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
+KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/nvidia"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
+KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
 export ANDROID_SDK_ROOT="$HOME/Development/Android"
 export ANDROID_USER_HOME="$ANDROID_SDK_ROOT/.android"
@@ -45,7 +45,3 @@ PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 PATH="$HOME/Development/Repos/dotfiles/bin:$PATH"
 
 mkdir -p "$XDG_RUNTIME_DIR"
-
-if [ "$(tty)" = /dev/tty1 ]; then
-   	exec sway --unsupported-gpu
-fi
