@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export XDG_RUNTIME_DIR="/tmp/$(whoami)"
+
+mkdir -p "$XDG_RUNTIME_DIR"
+exec pipewire 2>&1
