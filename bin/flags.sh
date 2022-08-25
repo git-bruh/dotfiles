@@ -33,6 +33,7 @@ export DEFFLAGS="
 	--ro-bind-try $HOME/.asoundrc $HOME/.asoundrc
 	--ro-bind-try $HOME/.icons $HOME/.icons
 	--ro-bind-try $HOME/.config/gtk-3.0 $HOME/.config/gtk-3.0
+	--ro-bind-try $HOME/.config/fontconfig $HOME/.config/fontconfig
 	--dev /dev
 	--dev-bind /dev/snd /dev/snd
 	--dev-bind /dev/dri /dev/dri
