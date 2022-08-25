@@ -4,6 +4,8 @@ export CFLAGS="-O3 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j$(nproc)"
 
+export SVDIR="$HOME/.config/sv"
+
 export WLR_NO_HARDWARE_CURSORS=1
 
 export PS1="λ "
@@ -17,6 +19,8 @@ export TSAN_OPTIONS="log_path=./TSAN"
 
 export MOZ_WEBRENDER=1
 export MOZ_ENABLE_WAYLAND=1
+
+export CHROME_FLAGS="--ozone-platform=x11"
 
 export CMAKE_GENERATOR=Ninja
 
@@ -48,3 +52,5 @@ PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 PATH="$HOME/Development/Repos/dotfiles/bin:$PATH"
 
 mkdir -p "$XDG_RUNTIME_DIR"
+
+[ "$(tty)" = "/dev/tty1" ] && startx /usr/bin/bspwm
