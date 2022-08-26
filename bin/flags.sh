@@ -37,7 +37,10 @@ export DEFFLAGS="
 	--dev /dev
 	--dev-bind /dev/snd /dev/snd
 	--dev-bind /dev/dri /dev/dri
+	--dev-bind-try /dev/nvidia-caps /dev/nvidia-caps
 	--dev-bind-try /dev/nvidia-modeset /dev/nvidia-modeset
+	--dev-bind-try /dev/nvidia-uvm /dev/nvidia-uvm
+	--dev-bind-try /dev/nvidia-uvm-tools /dev/nvidia-uvm-tools
 	--dev-bind-try /dev/nvidia0 /dev/nvidia0
 	--dev-bind-try /dev/nvidiactl /dev/nvidiactl
 	--dev-bind-try /dev/video0 /dev/video0
