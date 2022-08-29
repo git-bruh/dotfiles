@@ -226,7 +226,7 @@ set $base0D #61afef
 set $base0E #c678dd
 set $base0F #be5046
 
-set $menu exec bemenu-run --tb "$base00" --tf "$base05" --fb "$base00" --ff "$base05" --nf "$base05" --nb "$base00" --hb "$base0D" --hf "$base00" --sb "$base0D" --sf "$base00" --fn "monospace 12"
+set $menu exec bemenu-run --tb "$base00" --tf "$base05" --fb "$base00" --ff "$base05" --nf "$base05" --nb "$base00" --af "$base05" --ab "$base00" --hb "$base0D" --hf "$base00" --sb "$base0D" --sf "$base00" --hp 10 --fn "monospace 12"
 
 #
 # Status Bar:
@@ -259,7 +259,5 @@ client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
-
-client.background       #F8F8F2
 
 include /etc/sway/config.d/*
