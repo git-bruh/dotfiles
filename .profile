@@ -35,16 +35,6 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
-export ANDROID_SDK_ROOT="$HOME/Development/Android"
-export ANDROID_USER_HOME="$ANDROID_SDK_ROOT/.android"
-export ANDROID_EMULATOR_HOME="$ANDROID_USER_HOME"
-export DART_VM_OPTIONS="--root-certs-file=/etc/ssl/cert.pem"
-export GRADLE_USER_HOME="$ANDROID_USER_HOME"
-export JAVA_HOME="$ANDROID_SDK_ROOT/java"
-
-PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
-PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-
 PATH="$HOME/Development/Repos/dotfiles/bin:$PATH"
 
 mkdir -p "$XDG_RUNTIME_DIR"
