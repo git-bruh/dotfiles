@@ -2,7 +2,7 @@
 
 export CFLAGS="-O3 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j$(nproc)"
+export MAKEFLAGS="-j8"
 
 export SVDIR="$HOME/.config/sv"
 
