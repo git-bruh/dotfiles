@@ -29,8 +29,8 @@ export KISS_SU=ssu
 
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
-KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/nvidia"
+KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
