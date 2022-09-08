@@ -4,7 +4,7 @@
 
 mkdir -p "$HOME/.config/chromium" "$HOME/Downloads/chromium"
 
-bwrap \
+exec bwrap \
 	$DEFFLAGS \
 	--bind "$HOME/.config/chromium" "$HOME/.config/chromium" \
 	--bind "$HOME/Downloads/chromium" "$HOME/Downloads" \

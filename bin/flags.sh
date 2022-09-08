@@ -6,6 +6,8 @@ unset DBUS_SESSION_BUS_PID
 DBUS_WRAPPER_REAL="$(dirname "$0")/dbus-wrap"
 DBUS_WRAPPER=/dbus-wrap
 
+mkdir -p "$SANDBOX_HOME"
+
 export DBUSFLAGS="
 	--dir /run/dbus
 	--ro-bind-try /etc/dbus-1 /etc/dbus-1
@@ -17,15 +19,17 @@ export DBUSFLAGS="
 unset DBUS_WRAPPER_REAL
 
 export DEFFLAGS="
+	--ro-bind /usr /usr
+	--ro-bind /etc/ssl /etc/ssl
 	--ro-bind /etc/localtime /etc/localtime
 	--ro-bind /etc/fonts /etc/fonts
 	--ro-bind /etc/resolv.conf /etc/resolv.conf
-	--ro-bind /etc/ssl /etc/ssl
-	--ro-bind /usr /usr
 	--symlink usr/bin /bin
-	--symlink usr/bin /sbin
+	--symlink usr/sbin /sbin
 	--symlink usr/lib /lib
-	--symlink usr/lib /lib64
+	--symlink usr/lib64 /lib64
+	--symlink usr/lib32 /lib32
+	--symlink usr/libx32 /libx32
 	--ro-bind-try /usr/share/fonts /usr/share/fonts
 	--ro-bind-try /usr/share/icons /usr/share/icons
 	--ro-bind-try /usr/share/themes /usr/share/themes
@@ -53,7 +57,7 @@ export DEFFLAGS="
 	--unshare-all
 	--share-net
 	--hostname RESTRICTED
-	--setenv PATH /usr/bin
+	--setenv PATH /usr/bin:/usr/sbin
 	--setenv DISPLAY ${DISPLAY:-:0}
 	--die-with-parent
 	--new-session

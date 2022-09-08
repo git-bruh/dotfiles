@@ -4,7 +4,7 @@
 
 mkdir -p "$HOME/.config/mozilla" "$HOME/Downloads/firefox"
 
-bwrap \
+exec bwrap \
 	$DEFFLAGS \
 	--bind "$HOME/.config/mozilla" "$HOME/.mozilla" \
 	--bind "$HOME/Downloads/firefox" "$HOME/Downloads" \
