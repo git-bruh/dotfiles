@@ -1,32 +1,16 @@
 #!/bin/sh
 
+set -e
+
+unset DBUSLAUNCH
+
 printf "%s\n" \
 	"messagebus:x:$(id -u):$(id -u):messagebus:/dev/null:/bin/false" > /etc/passwd
 
-command -v dbus-launch && {
-	set -e
-
+command -v dbus-launch > /dev/null && {
 	DBUSLAUNCH=dbus-launch
-
 	dbus-uuidgen > /etc/machine-id
-	dbus-daemon --system --nopidfile
-
-	dbus-launch pipewire &
-
-	# Ensure that pipewire has started before trying to start xdg-desktop-portal*
-	max_tries=10
-
-	for _ in $(seq "$max_tries"); do
-		if [ ! -S "$XDG_RUNTIME_DIR/pipewire-0" ]; then
-			sleep 0.01
-		else
-			break
-		fi
-	done
-
-	dbus-launch /usr/lib/xdg-desktop-portal-wlr -r &
-	dbus-launch /usr/lib/xdg-desktop-portal -r &
 }
 
 # Ensure that we work on non-dbus systems aswell as DBUSLAUNCH will be empty.
-"$DBUSLAUNCH" "$@"
+${DBUSLAUNCH-} "$@"

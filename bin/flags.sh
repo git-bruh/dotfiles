@@ -6,8 +6,6 @@ unset DBUS_SESSION_BUS_PID
 DBUS_WRAPPER_REAL="$(dirname "$0")/dbus-wrap"
 DBUS_WRAPPER=/dbus-wrap
 
-mkdir -p "$SANDBOX_HOME"
-
 export DBUSFLAGS="
 	--dir /run/dbus
 	--ro-bind-try /etc/dbus-1 /etc/dbus-1
