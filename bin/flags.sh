@@ -49,6 +49,9 @@ export DEFFLAGS="
 	--proc /proc
 	--ro-bind /sys/dev/char /sys/dev/char
 	--ro-bind /sys/devices/pci0000:00 /sys/devices/pci0000:00
+	--dir /sys/block
+	--dir /sys/bus
+	--dir /sys/class
 	--tmpfs /tmp
 	--bind-try $XDG_RUNTIME_DIR $XDG_RUNTIME_DIR
 	--bind-try /tmp/.X11-unix /tmp/.X11-unix
