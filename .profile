@@ -33,6 +33,7 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/nvidia"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/android"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
 PATH="$HOME/Development/Repos/dotfiles/bin:$PATH"
