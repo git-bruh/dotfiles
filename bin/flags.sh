@@ -18,6 +18,7 @@ unset DBUS_WRAPPER_REAL
 
 export DEFFLAGS="
 	--ro-bind /usr /usr
+	--ro-bind /etc/hosts /etc/hosts
 	--ro-bind /etc/ssl /etc/ssl
 	--ro-bind /etc/localtime /etc/localtime
 	--ro-bind /etc/fonts /etc/fonts
