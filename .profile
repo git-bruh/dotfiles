@@ -12,7 +12,7 @@ export PS1="λ "
 export EDITOR=vi
 export LANG=en_US.UTF8
 export XDG_RUNTIME_DIR="/tmp/$(whoami)"
-export GTK_THEME=Qogir-dark
+export GTK_THEME=Catppuccin-Mocha
 
 export ASAN_OPTIONS="log_path=./ASAN"
 export TSAN_OPTIONS="log_path=./TSAN"
@@ -25,7 +25,6 @@ export CMAKE_GENERATOR=Ninja
 export KISS_PATH=
 export KISS_TMPDIR=/tmp/kiss
 export KISS_GET=axel
-export KISS_SU=ssu
 
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
