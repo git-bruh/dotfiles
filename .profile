@@ -11,7 +11,6 @@ export WLR_NO_HARDWARE_CURSORS=1
 export PS1="λ "
 export EDITOR=vi
 export LANG=en_US.UTF8
-export XDG_RUNTIME_DIR="/tmp/$(whoami)"
 export GTK_THEME=Catppuccin-Mocha
 
 export ASAN_OPTIONS="log_path=./ASAN"
@@ -28,7 +27,6 @@ export KISS_GET=axel
 
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/overrides"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
-KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/nvidia"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
