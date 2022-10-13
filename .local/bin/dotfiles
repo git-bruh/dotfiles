@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+: "${DOTFILES_REPO:=$HOME/Development/Repos/dotfiles.git}"
+
+GIT="git --git-dir=$DOTFILES_REPO --work-tree=$HOME"
+
+$GIT config --local status.showUntrackedFiles no
+$GIT "$@"

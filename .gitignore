@@ -1,1 +1,24 @@
-sv/*/supervise
+/*
+!/.gitignore
+
+!/Wallpapers/
+
+!/.profile
+
+!/.local/
+/.local/*
+!/.local/bin/
+
+!/.config/
+/.config/*
+!/.config/fontconfig/
+!/.config/foot/
+!/.config/gtk-3.0/
+!/.config/kak/
+!/.config/sway/
+
+!/.config/s6/
+# Ignore .s6-svscan, */supervise, */event, ...
+/.config/s6/.*
+/.config/s6/*/*
+!/.config/s6/*/run

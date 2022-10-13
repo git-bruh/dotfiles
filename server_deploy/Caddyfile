@@ -1,1 +1,0 @@
-dns duckdns {env.DUCKDNS_API_TOKEN}

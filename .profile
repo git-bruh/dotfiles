@@ -4,8 +4,6 @@ export CFLAGS="-O3 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j8"
 
-export SVDIR="$HOME/.config/sv"
-
 export WLR_NO_HARDWARE_CURSORS=1
 
 export PS1="λ "
@@ -33,7 +31,7 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/android"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
-PATH="$HOME/Development/Repos/dotfiles/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 
 mkdir -p "$XDG_RUNTIME_DIR"
 

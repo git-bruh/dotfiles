@@ -1,8 +1,9 @@
 #!/bin/sh
 
 exec bwrap \
-	--bind "${1:?}" / \
+	--bind "${1:-$HOME/Distros/KISS}" / \
 	--bind /tmp /tmp \
+	--bind "$HOME/.cache/kiss/sources" /root/.cache/kiss/sources \
 	--ro-bind /etc/resolv.conf /etc/resolv.conf \
 	--dev /dev \
 	--proc /proc \

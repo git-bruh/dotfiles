@@ -1,0 +1,12 @@
+colorscheme catppuccin_mocha
+
+set global tabstop 4
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+    lsp-enable-window
+
+    lsp-inlay-hints-enable global
+    lsp-inlay-diagnostics-enable global
+}
