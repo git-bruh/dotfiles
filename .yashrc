@@ -1,0 +1,12 @@
+# Firstly, load the common customization script.
+# If you don't like settings applied in this script, remove this line.
+. --autoload --no-alias initialization/common
+
+# These are additional aliases that are not defined in the common script.
+# Uncomment to enable them.
+alias g='grep'
+alias l='$PAGER'
+alias --global L='|$PAGER'
+alias --global N='2>&1'
+
+set -o vi

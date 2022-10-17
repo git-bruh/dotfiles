@@ -1,23 +1,35 @@
 #!/bin/sh
 
-export CFLAGS="-O3 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"
-export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j8"
+. /etc/profile
 
-export WLR_NO_HARDWARE_CURSORS=1
+# General config
 
-export PS1="λ "
+export PATH="$HOME/.local/bin:$PATH"
+
 export EDITOR=vi
 export LANG=en_US.UTF8
+
+export WLR_NO_HARDWARE_CURSORS=1
+export MOZ_WEBRENDER=1
+export MOZ_ENABLE_WAYLAND=1
+export SDL_VIDEODRIVER=wayland
+
 export GTK_THEME=Catppuccin-Mocha
+
+# Dev config
 
 export ASAN_OPTIONS="log_path=./ASAN"
 export TSAN_OPTIONS="log_path=./TSAN"
 
-export MOZ_WEBRENDER=1
-export MOZ_ENABLE_WAYLAND=1
+# Build config
+
+export CFLAGS="-O2 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=3"
+export CXXFLAGS="$CFLAGS"
+export MAKEFLAGS="-j8"
 
 export CMAKE_GENERATOR=Ninja
+
+# KISS config
 
 export KISS_PATH=
 export KISS_TMPDIR=/tmp/kiss
@@ -31,8 +43,8 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/android"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
-PATH="$HOME/.local/bin:$PATH"
+# Sway auto-start
 
 mkdir -p "$XDG_RUNTIME_DIR"
 
-[ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
+# [ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu

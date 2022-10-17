@@ -3,7 +3,8 @@
 
 !/Wallpapers/
 
-!/.profile
+!/.yash_profile
+!/.yashrc
 
 !/.local/
 /.local/*
