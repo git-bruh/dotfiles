@@ -1,0 +1,8 @@
+[commit]
+	gpgsign = true
+[user]
+	name = git-bruh
+	email = e817509a-8ee9-4332-b0ad-3a6bdf9ab63f@aleeas.com
+	signingkey = ~/.ssh/id_ed25519
+[gpg]
+	format = ssh
