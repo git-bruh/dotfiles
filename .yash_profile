@@ -2,12 +2,15 @@
 
 . /etc/profile
 
+# TTY
+export TERM="${TERM:=linux}"
+
 # General config
 
 export PATH="$HOME/.local/bin:$PATH"
 
 export EDITOR=vi
-export LANG=en_US.UTF8
+export LANG=en_US.UTF-8
 
 export WLR_NO_HARDWARE_CURSORS=1
 export MOZ_WEBRENDER=1
@@ -40,6 +43,7 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/dbus"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/android"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
