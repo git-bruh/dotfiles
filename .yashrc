@@ -10,3 +10,4 @@ alias --global L='|$PAGER'
 alias --global N='2>&1'
 
 set -o vi
+set +o lepromptsp
