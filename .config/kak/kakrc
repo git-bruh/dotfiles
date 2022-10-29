@@ -2,6 +2,11 @@ colorscheme catppuccin_mocha
 
 set global tabstop 4
 
+add-highlighter global/ show-matching
+
+enable-auto-pairs
+set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « » ‹ ›
+
 eval %sh{kak-lsp --kakoune -s $kak_session}
 
 hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
