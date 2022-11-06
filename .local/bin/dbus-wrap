@@ -2,4 +2,9 @@
 
 set -e
 
-unshare -frpc --mount-proc -- dbus-launch "$@"
+unshare -frpc --mount-proc sh -c '
+export $(dbus-launch)
+/usr/lib/xdg-desktop-portal-wlr &
+
+exec "$@"
+' - "$@"
