@@ -51,4 +51,4 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
 mkdir -p "$XDG_RUNTIME_DIR"
 
-# [ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
+[ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
