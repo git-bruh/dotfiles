@@ -9,5 +9,7 @@ alias l='$PAGER'
 alias --global L='|$PAGER'
 alias --global N='2>&1'
 
+alias mvi='mpv --config-dir=$HOME/.config/mvi'
+
 set -o vi
 set +o lepromptsp
