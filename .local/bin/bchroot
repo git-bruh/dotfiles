@@ -15,7 +15,7 @@ exec bwrap \
 	--die-with-parent \
 	--uid 0 \
 	--gid 0 \
-	env -i \
+	/bin/env -i \
 		SHELL=/bin/sh \
 		TERM=xterm-256color \
 		LOGNAME=root \
