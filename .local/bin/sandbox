@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -eu
+
+: "${SANDBOX_HOME:=$HOME/.var/sandbox}"
+mkdir -p "$SANDBOX_HOME"
+
+if [ -z "$@" ]; then
+    set -- /bin/bash -i
+else
+    set -- /bin/bash -ic "$@"
+fi
+
+[ "$PWD" = "$HOME" ] || set -- --bind "$PWD" "$PWD" "$@"
+
+bwrap \
+    --ro-bind /etc /etc \
+    --ro-bind /opt /opt \
+    --ro-bind /usr /usr \
+    --tmpfs /tmp \
+    --proc /proc \
+    --dev /dev \
+    --dir /sys \
+    --symlink usr/bin /bin \
+    --symlink usr/lib /lib \
+    --symlink usr/lib /lib64 \
+    --bind "$SANDBOX_HOME" "$HOME" \
+    --unshare-all \
+    --share-net \
+    --die-with-parent \
+    ${SANDBOX_ARGS:-} \
+    "$@"

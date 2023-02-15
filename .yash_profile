@@ -32,6 +32,15 @@ export MAKEFLAGS="-j8"
 
 export CMAKE_GENERATOR=Ninja
 
+# Junest & Sandbox
+
+export JUNEST_HOME="$HOME/.var/junest"
+
+export SANDBOX_ARGS="
+--ro-bind $HOME/.config/kak $HOME/.config/kak
+--ro-bind $HOME/.config/kak-lsp $HOME/.config/kak-lsp
+"
+
 # KISS config
 
 export KISS_PATH=
