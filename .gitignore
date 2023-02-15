@@ -29,3 +29,9 @@
 /.config/s6/.*
 /.config/s6/*/*
 !/.config/s6/*/run
+
+!/.var/
+/.var/*
+!/.var/sandbox
+/.var/sandbox/*
+!/.var/sandbox/.bashrc
