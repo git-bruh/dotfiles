@@ -7,7 +7,7 @@ export TERM="${TERM:=linux}"
 
 # General config
 
-export PATH="$HOME/.local/bin:$PATH:$HOME/.local/share/flatpak/exports/bin"
+export PATH="$HOME/.local/bin:$PATH:$HOME/.local/share/junest/bin:$HOME/.local/share/flatpak/exports/bin"
 
 export EDITOR=vi
 export LANG=en_US.UTF-8

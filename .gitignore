@@ -10,6 +10,9 @@
 !/.local/
 /.local/*
 !/.local/bin/
+!/.local/share/
+/.local/share/*
+!/.local/share/junest
 
 !/.config/
 /.config/*
