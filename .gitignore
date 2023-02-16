@@ -34,4 +34,4 @@
 /.var/*
 !/.var/sandbox
 /.var/sandbox/*
-!/.var/sandbox/.bashrc
+!/.var/sandbox/.yashrc
