@@ -9,7 +9,7 @@ set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « 
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
 
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|dart) %{
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|dart|html|css|json) %{
     lsp-enable-window
 
     lsp-inlay-hints-enable global
