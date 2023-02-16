@@ -1,8 +1,0 @@
-#!/bin/sh -e
-
-VENV="$HOME/.local/share/venv"
-
-[ -d "$VENV" ] || python -m venv "$VENV"
-. "$VENV/bin/activate"
-
-exec "$@"
