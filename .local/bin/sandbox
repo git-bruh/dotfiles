@@ -5,13 +5,11 @@ set -eu
 : "${SANDBOX_HOME:=$HOME/.var/sandbox}"
 mkdir -p "$SANDBOX_HOME"
 
-if [ -z "$@" ]; then
-    set -- /bin/bash -i
-else
-    set -- /bin/bash -ic "$@"
-fi
+SHELL=yash
+CMD="${@:-$SHELL}"
 
-[ "$PWD" = "$HOME" ] || set -- --bind "$PWD" "$PWD" "$@"
+set --
+[ "$PWD" = "$HOME" ] || set -- --bind "$PWD" "$PWD"
 
 bwrap \
     --ro-bind /etc /etc \
@@ -29,4 +27,5 @@ bwrap \
     --share-net \
     --die-with-parent \
     ${SANDBOX_ARGS:-} \
-    "$@"
+    "$@" \
+    $SHELL -ic "$CMD"
