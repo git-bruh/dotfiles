@@ -1,3 +1,5 @@
+. --autoload --no-alias initialization/common
+
 export ANDROID_SDK_ROOT="$HOME/android-sdk"
 
 export VOLTA_HOME="$HOME/.volta"
