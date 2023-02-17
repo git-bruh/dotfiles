@@ -6,11 +6,11 @@ IMG="$1"
 shift
 
 qemu-system-x86_64 \
-    -enable-kvm \
-    -cpu host \
-    -smp "$(nproc)" \
-    -m 8G \
-    -device virtio-vga-gl \
-    -display sdl,gl=on \
-    -drive file="$IMG",if=virtio \
-    "$@"
+	-enable-kvm \
+	-cpu host \
+	-smp "$(nproc)" \
+	-m 8G \
+	-device virtio-vga-gl \
+	-display sdl,gl=on \
+	-drive file="$IMG",if=virtio \
+	"$@"

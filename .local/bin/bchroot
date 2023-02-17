@@ -16,9 +16,9 @@ exec bwrap \
 	--uid 0 \
 	--gid 0 \
 	/bin/env -i \
-		SHELL=/bin/sh \
-		TERM=xterm-256color \
-		LOGNAME=root \
-		USER=root \
-		HOME=/root \
-		/bin/sh -l
+	SHELL=/bin/sh \
+	TERM=xterm-256color \
+	LOGNAME=root \
+	USER=root \
+	HOME=/root \
+	/bin/sh -l
