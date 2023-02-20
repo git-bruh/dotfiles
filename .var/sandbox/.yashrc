@@ -2,10 +2,8 @@
 
 export ANDROID_SDK_ROOT="$HOME/android-sdk"
 
-export VOLTA_HOME="$HOME/.volta"
-
 export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$HOME/flutter/bin"
 PATH="$PATH:$HOME/go/bin"
 PATH="$PATH:$HOME/.cargo/bin"
-PATH="$PATH:$VOLTA_HOME/bin"
+PATH="$PATH:$HOME/.npm_global/bin"
 PATH="$PATH:$HOME/venv/bin"
