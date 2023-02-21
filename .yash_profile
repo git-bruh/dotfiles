@@ -58,6 +58,4 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
 # Sway auto-start
 
-mkdir -p "$XDG_RUNTIME_DIR"
-
 [ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu --debug > "$XDG_RUNTIME_DIR/sway.log" 2>&1
