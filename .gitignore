@@ -13,6 +13,8 @@
 !/.local/share/
 /.local/share/*
 !/.local/share/junest
+!/.local/share/s6-rc
+/.local/share/s6-rc/rc
 
 !/.config/
 /.config/*
