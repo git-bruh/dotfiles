@@ -5,9 +5,9 @@ set global tabstop 4
 add-highlighter global/ show-matching
 add-highlighter global/ number-lines
 
-map global user P '!wl-paste -n<ret>' # Paste before
-map global user p '<a-!>wl-paste -n<ret>' # Paste after
-map global user R '|wl-paste -n<ret>' # Replace selection
+map global user P '!waypaste<ret>' # Paste before
+map global user p '<a-!>waypaste<ret>' # Paste after
+map global user R '|waypaste<ret>' # Replace selection
 
 enable-auto-pairs
 set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « » ‹ ›
