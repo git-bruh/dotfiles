@@ -240,7 +240,7 @@ set $base0E #cba6f7
 # flamingo
 set $base0F #f2cdcd
 
-set $bemenu_args --tb "$base00" --tf "$base05" --fb "$base00" --ff "$base05" --nf "$base05" --nb "$base00" --af "$base05" --ab "$base00" --hb "$base0D" --hf "$base00" --sb "$base0D" --sf "$base00" --hp 10 --fn "monospace 12"
+set $bemenu_args --tb "$base00" --tf "$base05" --fb "$base00" --ff "$base05" --nf "$base05" --nb "$base00" --af "$base05" --ab "$base00" --hb "$base0D" --hf "$base00" --sb "$base0D" --sf "$base00" --hp 10 --fn "monospace 13"
 
 set $menu bemenu-run $bemenu_args | xargs swaymsg exec --
 
