@@ -28,7 +28,8 @@ export TSAN_OPTIONS="log_path=./TSAN"
 
 export CFLAGS="-O2 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=3"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j8"
+export MAKEFLAGS="-j6"
+export SAMUFLAGS="$MAKEFLAGS"
 
 export CMAKE_GENERATOR=Ninja
 
