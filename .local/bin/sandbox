@@ -10,7 +10,7 @@ CMD="${@:-$SHELL}"
 
 set --
 [ "$PWD" = "$HOME" ] || {
-    if gitpath="$(git rev-parse --show-toplevel)"; then
+    if gitpath="$(git rev-parse --show-toplevel 2>/dev/null)"; then
         set -- --bind "$gitpath" "$gitpath"
     else
         set -- --bind "$PWD" "$PWD"
