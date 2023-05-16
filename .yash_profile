@@ -2,6 +2,9 @@
 
 . /etc/profile
 
+# Enable core dumps
+ulimit -c unlimited
+
 # TTY
 export TERM="${TERM:=linux}"
 
@@ -12,7 +15,6 @@ export PATH="$HOME/.local/bin:$PATH:$HOME/.local/share/junest/bin:$HOME/.local/s
 export EDITOR=vi
 export LANG=en_US.UTF-8
 
-export WLR_NO_HARDWARE_CURSORS=1
 export MOZ_WEBRENDER=1
 export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
