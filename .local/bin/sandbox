@@ -2,6 +2,9 @@
 
 set -eu
 
+DOCKER_SOCK=/var/run/docker.sock
+
+: "${WAYLAND_DISPLAY:=wayland-1}"
 : "${SANDBOX_HOME:=$HOME/.var/sandbox}"
 mkdir -p "$SANDBOX_HOME"
 
@@ -31,6 +34,7 @@ bwrap \
 	--symlink usr/lib /lib \
 	--symlink usr/lib /lib64 \
 	--bind "$SANDBOX_HOME" "$HOME" \
+	--bind-try "$DOCKER_SOCK" "$DOCKER_SOCK" \
 	--bind-try "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" \
 	--unshare-all \
 	--share-net \
