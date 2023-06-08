@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+yes | wf-recorder --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file=/dev/video2
