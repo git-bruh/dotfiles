@@ -73,6 +73,9 @@ output * scale 1.5
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    # Screenshot
+    bindsym $mod+g exec grim -g "$(slurp)" - | waycopy -t image/png
+
     # Vol up
     bindsym Shift+F12 exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
 
