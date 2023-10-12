@@ -44,6 +44,8 @@ export SANDBOX_ARGS="
 --ro-bind $HOME/.config/kak-lsp $HOME/.config/kak-lsp
 "
 
+export FLATPAK_SYSTEM_DIR="$HOME/.local/share/flatpak"
+
 # KISS config
 
 export KISS_PATH=
@@ -55,10 +57,12 @@ KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/core"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/extra"
 KISS_PATH="$KISS_PATH:$HOME/KISS/grepo/wayland"
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/repo"
-KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/dbus"
-KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/android"
+KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-dbus/dbus"
 KISS_PATH="$KISS_PATH:$HOME/KISS/community/community"
 
 # Sway auto-start
 
-[ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu --debug > "$XDG_RUNTIME_DIR/sway.log" 2>&1
+[ "$(tty)" = "/dev/tty1" ] && {
+    export XDG_CURRENT_DESKTOP=sway
+    exec sway --unsupported-gpu --debug > "$XDG_RUNTIME_DIR/sway.log" 2>&1
+}
