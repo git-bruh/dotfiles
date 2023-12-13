@@ -21,8 +21,7 @@
 !/.config/fontconfig/
 !/.config/foot/
 !/.config/gtk-3.0/
-!/.config/kak/
-!/.config/kak-lsp/
+!/.config/vis/
 !/.config/mvi
 !/.config/sway/
 
