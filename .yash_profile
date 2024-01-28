@@ -39,10 +39,7 @@ export CMAKE_GENERATOR=Ninja
 
 export JUNEST_HOME="$HOME/.var/junest"
 
-export SANDBOX_ARGS="
---ro-bind $HOME/.config/kak $HOME/.config/kak
---ro-bind $HOME/.config/kak-lsp $HOME/.config/kak-lsp
-"
+export SANDBOX_ARGS="--ro-bind $HOME/.config/vis $HOME/.config/vis"
 
 export FLATPAK_SYSTEM_DIR="$HOME/.local/share/flatpak"
 
