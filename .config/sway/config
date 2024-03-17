@@ -79,14 +79,15 @@ for_window [app_id="firefox" title="^$"] border none, floating enable
     # Screenshot
     bindsym $mod+g exec grim -g "$(slurp)" - | wl-copy -t image/png
 
-    # Vol up
-    bindsym Shift+F12 exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+    bindsym XF86AudioRaiseVolume exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
 
-    # Vol down
-    bindsym Shift+F11 exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    bindsym XF86AudioLowerVolume exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
-    # (Un)Mute
-    bindsym Shift+F10 exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+    bindsym XF86MonBrightnessUp exec "lux -a 10"
+
+    bindsym XF86MonBrightnessDown exec "lux -s 10"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
