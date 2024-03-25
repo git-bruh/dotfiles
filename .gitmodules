@@ -1,6 +1,3 @@
 [submodule ".config/mvi"]
 	path = .config/mvi
 	url = https://github.com/occivink/mpv-image-viewer
-[submodule "/home/testuser/.local/share/junest"]
-	path = .local/share/junest
-	url = https://github.com/fsquillace/junest
