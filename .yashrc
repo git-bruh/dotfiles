@@ -13,3 +13,9 @@ alias mvi='mpv --config-dir=$HOME/.config/mvi'
 
 set -o vi
 set +o lepromptsp
+
+_osc7_cwd() {
+    printf "\033]7;file://%s%s\033\\" "$HOSTNAME" "$PWD"
+}
+
+PROMPT_COMMAND=("$PROMPT_COMMAND" '_osc7_cwd')
