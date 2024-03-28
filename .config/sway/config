@@ -18,7 +18,9 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+set $wmenu_args -f "monospace 12" -p "wmenu" -N "$base00" -n "$base05" -M "$base0D" -m "$base00" -S "$base0D" -s "$base00"
+set $menu menu_path | wmenu $wmenu_args | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -246,10 +248,6 @@ set $base0D #89b4fa
 set $base0E #cba6f7
 # flamingo
 set $base0F #f2cdcd
-
-set $bemenu_args --tb "$base00" --tf "$base05" --fb "$base00" --ff "$base05" --nf "$base05" --nb "$base00" --af "$base05" --ab "$base00" --hb "$base0D" --hf "$base00" --sb "$base0D" --sf "$base00" --hp 10 --fn "monospace 13"
-
-set $menu bemenu-run $bemenu_args | xargs swaymsg exec --
 
 #
 # Status Bar:
