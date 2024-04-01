@@ -2,15 +2,7 @@ require('vis')
 require('plugins/vis-lspc')
 
 function fuzzyGrep(action)
-    local gitgrep_args = "git grep -rnI"
-
-    if os.execute("git rev-parse --git-dir >/dev/null 2>&1") == 0 then
-        gitgrep_args = gitgrep_args .. " --untracked"
-    else
-        gitgrep_args = gitgrep_args .. " --no-index"
-    end
-
-    local status, output = vis:pipe(gitgrep_args .. " '' 2>/dev/null | fzy")
+    local status, output = vis:pipe("git grep -rnI --no-index --exclude-standard '' 2>/dev/null | fzy")
 
     if status == 0 then
         local filename = string.find(output, ":")
