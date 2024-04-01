@@ -2,9 +2,6 @@
 
 . /etc/profile
 
-# Enable core dumps
-ulimit -c unlimited
-
 # TTY
 export TERM="${TERM:=linux}"
 
