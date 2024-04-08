@@ -35,6 +35,15 @@ vis.events.subscribe(vis.events.INIT, function()
     vis:command("set lspc-menu-cmd fzy")
     vis:command("set lspc-confirm-cmd fzy")
     vis:command("set lspc-message-level 1")
+    vis:command("set lspc-highlight-diagnostics range")
+
+    local error_style = 'fore:' .. vis.lexers.colors.base08 .. ',italics,underlined'
+    local warning_style = 'fore:' .. vis.lexers.colors.base0A .. ',italics,underlined'
+
+    vis:command("set lspc-diagnostic-style-error " .. error_style)
+    vis:command("set lspc-diagnostic-style-warning " .. warning_style)
+    vis:command("set lspc-diagnostic-style-information " .. warning_style)
+    vis:command("set lspc-diagnostic-style-hint " .. warning_style)
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
