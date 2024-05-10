@@ -57,3 +57,6 @@ lexers.STYLE_STATUS_FOCUSED = 'fore:'..colors.base09..',back:'..colors.base01
 lexers.STYLE_SEPARATOR = lexers.STYLE_DEFAULT
 lexers.STYLE_INFO = 'fore:default,back:default,bold'
 lexers.STYLE_EOF = ''
+
+lexers.STYLE_CODE = lexers.STYLE_DEFAULT
+lexers.STYLE_CODE_BLOCK = lexers.STYLE_CODE
