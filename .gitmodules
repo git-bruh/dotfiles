@@ -3,4 +3,4 @@
 	url = https://github.com/occivink/mpv-image-viewer
 [submodule ".config/vis/plugins/vis-lspc"]
 	path = .config/vis/plugins/vis-lspc
-	url = https://github.com/git-bruh/vis-lspc
+	url = https://github.com/fischerling/vis-lspc

@@ -1,5 +1,5 @@
 require('vis')
-require('plugins/vis-lspc')
+lspc = require('plugins/vis-lspc')
 
 function fuzzyGrep(action)
     local status, output = vis:pipe("git grep -rnI --no-index --exclude-standard '' 2>/dev/null | fzy")
@@ -51,3 +51,6 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:command("set expandtab on")
     vis:command("set tabwidth 4")
 end)
+
+lspc.show_message = 'open'
+lspc.ls_map['zig'] = {name = 'zig', cmd = 'zls', roots = {'build.zig'}}
