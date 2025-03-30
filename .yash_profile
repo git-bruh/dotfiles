@@ -22,13 +22,12 @@ export GTK_THEME=Catppuccin-Mocha
 
 export CFLAGS="-O2 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=3"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j16"
+export MAKEFLAGS="-j8"
 export SAMUFLAGS="$MAKEFLAGS"
 
 # KISS config
 
 export KISS_PATH=
-export KISS_TMPDIR=/tmp/kiss
 export KISS_GET=axel
 
 KISS_PATH="$KISS_PATH:$HOME/KISS/kiss-repo/overrides"
