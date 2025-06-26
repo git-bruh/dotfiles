@@ -24,6 +24,7 @@
 !/.config/vis/
 !/.config/mvi
 !/.config/sway/
+!/.config/kanshi/
 
 !/.config/s6/
 # Ignore .s6-svscan, */supervise, */event, ...
