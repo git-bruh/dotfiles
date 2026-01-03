@@ -1,0 +1,12 @@
+root = socket://127.0.0.1:6666//sdcard
+root = /home/testuser/Unison
+
+path = .SeedVaultAndroidBackup
+path = .unison
+path = Backup
+path = DCIM
+path = Download
+path = Pictures
+path = Shared
+
+log = true

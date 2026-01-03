@@ -1,6 +1,3 @@
 [submodule ".config/mvi"]
 	path = .config/mvi
 	url = https://github.com/occivink/mpv-image-viewer
-[submodule ".config/vis/plugins/vis-lspc"]
-	path = .config/vis/plugins/vis-lspc
-	url = https://github.com/fischerling/vis-lspc

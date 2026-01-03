@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -eu
+
+ADDR="$1"
+PORT="$2"
+
+adb connect "$ADDR:$PORT"
+
+UNISON_PATH="/sdcard/.unison"
+UNISON_EXEC_PATH="/data/local/tmp/unison"
+
+UNISON_PORT=6666
+
+adb -s "$ADDR" forward "tcp:$UNISON_PORT" "tcp:$UNISON_PORT"
+adb -s "$ADDR" shell "cp $UNISON_PATH/unison $UNISON_EXEC_PATH && chmod +x $UNISON_EXEC_PATH && UNISON=$UNISON_PATH exec $UNISON_EXEC_PATH -silent -host 127.0.0.1 -socket $UNISON_PORT" &
+unison_pid=$!
+
+while ! unison -testserver >/dev/null 2>&1; do
+  kill -0 "$unison_pid" 2>/dev/null || exit 1
+
+  echo "Waiting for server to spin up..."
+  sleep 1
+done
+
+unison
+
+kill "$unison_pid"
+wait
+adb disconnect "$ADDR:$PORT"

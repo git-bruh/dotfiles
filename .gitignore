@@ -21,7 +21,6 @@
 !/.config/fontconfig/
 !/.config/foot/
 !/.config/gtk-3.0/
-!/.config/vis/
 !/.config/mvi
 !/.config/sway/
 !/.config/kanshi/
@@ -31,3 +30,7 @@
 /.config/s6/.*
 /.config/s6/*/*
 !/.config/s6/*/run
+
+!/.unison/
+/.unison/*
+!/.unison/default.prf
