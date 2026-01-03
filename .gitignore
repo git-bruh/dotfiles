@@ -21,6 +21,7 @@
 !/.config/fontconfig/
 !/.config/foot/
 !/.config/gtk-3.0/
+!/.config/helix/
 !/.config/mvi
 !/.config/sway/
 !/.config/kanshi/
