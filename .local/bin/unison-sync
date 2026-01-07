@@ -23,7 +23,7 @@ while ! unison -testserver >/dev/null 2>&1; do
   sleep 1
 done
 
-unison -killserver
+unison -auto -killserver
 
 wait
 adb disconnect "$ADDR:$PORT"
