@@ -7,7 +7,7 @@ export TERM="${TERM:=linux}"
 
 # General config
 
-export PATH="$HOME/.local/bin:$PATH:$HOME/.local/share/junest/bin:$HOME/.local/share/flatpak/exports/bin"
+export PATH="$HOME/.local/bin:$PATH:$HOME/.local/share/flatpak/exports/bin"
 export PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-musl/bin:$PATH:$HOME/.cargo/bin"
 
 export EDITOR=vi
@@ -21,12 +21,17 @@ export GTK_THEME=Catppuccin-Mocha
 
 # Build config
 
-export CFLAGS="-O2 -pipe -march=x86-64-v2 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=3"
+export CC=/usr/lib/icecc/bin/clang
+export CXX=/usr/lib/icecc/bin/clang++
+export CFLAGS="-O2 -pipe -march=x86-64-v3 -mtune=generic -fno-math-errno -fstack-protector-strong --param ssp-buffer-size=4"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS="-j8"
+export MAKEFLAGS="-j17"
 export SAMUFLAGS="$MAKEFLAGS"
 
 # KISS config
+
+export ICECC_VERSION=aarch64:/opt/icecc-envs/aarch64/cb7a5638137df913717cf468037bab41.tar.gz,x86_64:/opt/icecc-envs/native/663758560241425456b899031f6be952.tar.gz
+export KISS_SANDBOX_FILES="/var/run/icecc/iceccd.socket /opt/icecc-envs"
 
 export KISS_PATH=
 
