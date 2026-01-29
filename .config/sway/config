@@ -37,6 +37,7 @@ output * scale 1.25
 output DP-1 resolution 2560x1440@120.00Hz
 
 exec_always "pkill kanshi; kanshi &"
+exec_always "pkill xdg-desktop-portal-wlr; /usr/lib/xdg-desktop-portal-wlr &"
 
 ### Idle configuration
 #
