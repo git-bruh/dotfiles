@@ -1,4 +1,0 @@
-#!/usr/bin/execlineb -P
-foreground { install -d -o s6log -g s6log "/var/log/usertree/@USER@" }
-s6-setuidgid "s6log"
-s6-log -bd3 -- t n10 s1000000 "/var/log/usertree/@USER@"
